@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MerchantServiceImpl implements MerchantService {
     @Autowired
     private MerchantMapper merchantMapper;
+
     @Override
     public Integer registerMerchant(Merchant merchant) {
         return merchantMapper.registerMerchant(merchant);
@@ -19,7 +20,7 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public Integer loginMerchant(String merUsername, String merPassword) {
-        return merchantMapper.loginMerchant(merUsername,merPassword);
+        return merchantMapper.loginMerchant(merUsername, merPassword);
     }
 
     @Override

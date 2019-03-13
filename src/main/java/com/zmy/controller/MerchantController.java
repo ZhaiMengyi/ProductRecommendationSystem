@@ -17,6 +17,7 @@ public class MerchantController {
 
     /**
      * 注册商家
+     *
      * @param merUsername
      * @param merPassword
      * @param merShopName
@@ -27,41 +28,44 @@ public class MerchantController {
     @RequestMapping(value = "registerMerchant")
     @ResponseBody
     public Message registerMerchant(@RequestParam(value = "merUsername") String merUsername,
-                             @RequestParam(value = "merPassword") String merPassword,
-                             @RequestParam(value = "merShopName")String merShopName,
-                             @RequestParam(value = "merMobile")String merMobile,
-                             @RequestParam(value = "merAddress")String merAddress){
-        merchantService.registerMerchant(new Merchant(merUsername,merPassword,merShopName,merMobile,merAddress));
+                                    @RequestParam(value = "merPassword") String merPassword,
+                                    @RequestParam(value = "merShopName") String merShopName,
+                                    @RequestParam(value = "merMobile") String merMobile,
+                                    @RequestParam(value = "merAddress") String merAddress) {
+        merchantService.registerMerchant(new Merchant(merUsername, merPassword, merShopName, merMobile, merAddress));
         return Message.success("注册商家成功");
     }
 
     /**
      * 登录
+     *
      * @param merUsername
      * @param merPassword
      * @return
      */
     @RequestMapping(value = "loginMerchant")
     @ResponseBody
-    public Message loginMerchant(@RequestParam(value = "merUsername")String merUsername,
-                          @RequestParam(value = "merPassword")String merPassword){
-        merchantService.loginMerchant(merUsername,merPassword);
-        return  Message.success("登录成功");
+    public Message loginMerchant(@RequestParam(value = "merUsername") String merUsername,
+                                 @RequestParam(value = "merPassword") String merPassword) {
+        merchantService.loginMerchant(merUsername, merPassword);
+        return Message.success("登录成功");
     }
 
     /**
      * 查询商铺信息
+     *
      * @param merId
      * @return
      */
     @RequestMapping(value = "inquireMerInfoById")
     @ResponseBody
-    public Message inquireMerInfoById(@RequestParam(value = "merId")Integer merId){
-        return Message.success().addObject("merchant",merchantService.inquireMerInfoById(merId));
+    public Message inquireMerInfoById(@RequestParam(value = "merId") Integer merId) {
+        return Message.success().addObject("merchant", merchantService.inquireMerInfoById(merId));
     }
 
     /**
      * 修改商铺信息
+     *
      * @param merId
      * @param merUsername
      * @param merPassword
@@ -72,24 +76,25 @@ public class MerchantController {
      */
     @RequestMapping(value = "modifyMerInfo")
     @ResponseBody
-    public Message modifyMerInfo(@RequestParam(value = "merId")Integer merId,
-                          @RequestParam(value = "merUsername")String merUsername,
-                          @RequestParam(value = "merPassword")String merPassword,
-                          @RequestParam(value = "merShopName")String merShopName,
-                          @RequestParam(value = "merMobile")String merMobile,
-                          @RequestParam(value = "merAddress")String merAddress){
-        merchantService.modifyMerInfo(new Merchant(merUsername,merPassword,merShopName,merMobile,merAddress));
+    public Message modifyMerInfo(@RequestParam(value = "merId") Integer merId,
+                                 @RequestParam(value = "merUsername") String merUsername,
+                                 @RequestParam(value = "merPassword") String merPassword,
+                                 @RequestParam(value = "merShopName") String merShopName,
+                                 @RequestParam(value = "merMobile") String merMobile,
+                                 @RequestParam(value = "merAddress") String merAddress) {
+        merchantService.modifyMerInfo(new Merchant(merUsername, merPassword, merShopName, merMobile, merAddress));
         return Message.success("修改成功");
     }
 
     /**
      * 注销商铺信息
+     *
      * @param merId
      * @return
      */
     @RequestMapping(value = "deleteMerchant")
     @ResponseBody
-    public Message deleteMerchant(@RequestParam(value = "merId")Integer merId){
+    public Message deleteMerchant(@RequestParam(value = "merId") Integer merId) {
         merchantService.deleteMerchant(merId);
         return Message.success("注销成功");
     }

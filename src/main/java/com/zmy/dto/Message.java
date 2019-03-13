@@ -6,7 +6,7 @@ import java.util.Map;
 public class Message {
     private int code;
     private String msg;
-    private Map<String,Object> extend=new HashMap<>();
+    private Map<String, Object> extend = new HashMap<>();
 
     public Message(int code, String msg, Map<String, Object> extend) {
         this.code = code;
@@ -40,32 +40,37 @@ public class Message {
     public void setExtend(Map<String, Object> extend) {
         this.extend = extend;
     }
-    public static Message success(){
+
+    public static Message success() {
         Message result = new Message();
         result.setCode(666);
         result.setMsg("对，很对，非常对");
         return result;
     }
-    public static Message success(String message){
+
+    public static Message success(String message) {
         Message result = new Message();
         result.setCode(666);
         result.setMsg(message);
         return result;
     }
-    public static Message error(){
+
+    public static Message error() {
         Message result = new Message();
         result.setCode(555);
         result.setMsg("我套你个猴子");
         return result;
     }
-    public static Message error(String message){
+
+    public static Message error(String message) {
         Message result = new Message();
         result.setCode(555);
         result.setMsg(message);
         return result;
     }
-    public Message addObject(String key,Object value){
-        this.getExtend().put(key,value);
+
+    public Message addObject(String key, Object value) {
+        this.getExtend().put(key, value);
         return this;
     }
 }

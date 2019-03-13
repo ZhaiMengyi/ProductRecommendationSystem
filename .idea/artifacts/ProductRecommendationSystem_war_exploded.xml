@@ -1,13 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ProductRecommendationSystem:war exploded">
-    <output-path>$PROJECT_DIR$/target/ProductRecommendationSystem</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>ProductRecommendationSystem</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+    <output-path>$PROJECT_DIR$/out/artifacts/ProductRecommendationSystem_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -35,7 +28,8 @@
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.1.4" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:1.0" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.web:jstl-impl:1.2" />
           <element id="library" level="project" name="Maven: org.apache.taglibs:taglibs-standard-impl:1.2.5" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.10" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
@@ -46,9 +40,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.5" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.11.1" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/ProductRecommendationSystem/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="ProductRecommendationSystem/web/Web" />
     </root>

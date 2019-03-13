@@ -5,5 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ShoppingCartMapper {
     Integer addProToCarts(@Param(value = "shoppingCart") ShoppingCart shoppingCart);
+
     Integer deleteProFromCarts(Integer cartId);
 }

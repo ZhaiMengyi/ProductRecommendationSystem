@@ -18,8 +18,8 @@ public class ProductScoreController {
     @RequestMapping(value = "rateProduct")
     @ResponseBody
     public Message rateProduct(@RequestParam(value = "userId") Integer userId,
-                         @RequestParam(value = "proId") Integer proId,
-                         @RequestParam(value = "score") Double score){
+                               @RequestParam(value = "proId") Integer proId,
+                               @RequestParam(value = "score") Double score) {
         productScoreService.rateProduct(new ProductScore(userId, proId, score));
         return Message.success("打分成功");
     }

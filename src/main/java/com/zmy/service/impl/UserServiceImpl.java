@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public Integer registerUser(User user) {
         return userMapper.registerUser(user);
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer loginUser(String userName, String userPassword) {
-        return userMapper.loginUser(userName,userPassword);
+        return userMapper.loginUser(userName, userPassword);
     }
 
     @Override

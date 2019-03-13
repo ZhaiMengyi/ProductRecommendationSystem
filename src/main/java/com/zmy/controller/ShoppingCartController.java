@@ -18,6 +18,7 @@ public class ShoppingCartController {
 
     /**
      * 添加商品到购物车
+     *
      * @param userId
      * @param proId
      * @param proNum
@@ -26,19 +27,21 @@ public class ShoppingCartController {
     @RequestMapping(value = "addProToCarts")
     @ResponseBody
     public Message addProToCarts(@RequestParam(value = "userId") Integer userId,
-                            @RequestParam(value = "proId") Integer proId,
-                            @RequestParam(value = "proNum") Integer proNum){
-        shoppingCartService.addProToCarts(new ShoppingCart(userId,proId,proNum));
+                                 @RequestParam(value = "proId") Integer proId,
+                                 @RequestParam(value = "proNum") Integer proNum) {
+        shoppingCartService.addProToCarts(new ShoppingCart(userId, proId, proNum));
         return Message.success("添加成功");
     }
+
     /**
      * 从购物车删除商品
+     *
      * @param cartId
      * @return
      */
     @RequestMapping(value = "deleteProFromCarts")
     @ResponseBody
-    public Message deleteProFromCarts(@RequestParam(value = "cartId") Integer cartId){
+    public Message deleteProFromCarts(@RequestParam(value = "cartId") Integer cartId) {
         shoppingCartService.deleteProFromCarts(cartId);
         return Message.success("删除成功");
     }
