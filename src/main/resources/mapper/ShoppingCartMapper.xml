@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmy.mapper.ShoppingCartMapper">
+    <insert id="addProToCarts" parameterType="com.zmy.entity.ShoppingCart">
+        insert into
+        shopping_carts(user_id, pro_id, pro_num)
+        values
+        (#{shoppingCart.userId}, #{shoppingCart.proId}, #{shoppingCart.proNum})
+    </insert>
+
+    <delete id="deleteProFromCarts" parameterType="com.zmy.entity.ShoppingCart">
+        delete from
+        shopping_carts
+        where
+        cart_id = #{cartId}
+    </delete>
+</mapper>

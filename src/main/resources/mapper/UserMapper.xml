@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zmy.mapper.UserMapper">
+    <!--查询-->
+    <resultMap id="UserResultMap" type="com.zmy.entity.User">
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+        <result column="user_mobile" jdbcType="VARCHAR" property="userMobile"/>
+        <result column="user_address" jdbcType="VARCHAR" property="userAddress"/>
+    </resultMap>
+    <select id="inquireUserInfoById" resultMap="UserResultMap">
+        select * from
+        users
+        where
+        user_id = #{userId}
+    </select>
+
+    <!--注册-->
+    <insert id="registerUser" parameterType="com.zmy.entity.User">
+        insert into
+        users(user_name,user_password,user_mobile,user_address)
+        values
+        (#{user.userName}, #{user.userPassword},#{user.userMobile},#{user.userAddress})
+    </insert>
+
+    <!--登录-->
+    <resultMap id="LoginResultMap" type="com.zmy.entity.User">
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+    </resultMap>
+    <select id="loginUser" resultMap="LoginResultMap">
+        select user_name user_password from
+        users
+        where
+        user_name = #{userName}
+        and
+        user_password = #{userPassword}
+    </select>
+    <!--修改-->
+    <update id="modifyUserInfo" parameterType="com.zmy.entity.User">
+        update users
+        set user_name = #{user.userName},
+            user_password = #{user.userPassword},
+            user_mobile = #{user.userMobile},
+            user_address = #{user.userAddress}
+        where user_id = #{user.userId}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteUser" parameterType="com.zmy.entity.User">
+        delete from
+        users
+        where
+        user_id = #{userId}
+    </delete>
+
+</mapper>

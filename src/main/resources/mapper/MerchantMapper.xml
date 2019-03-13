@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmy.mapper.MerchantMapper">
+    <!--查询-->
+    <resultMap id="MerchantResultMap" type="com.zmy.entity.Merchant">
+        <result column="mer_username" jdbcType="VARCHAR" property="merUsername"/>
+        <result column="mer_password" jdbcType="VARCHAR" property="merPassword"/>
+        <result column="mer_shopName" jdbcType="VARCHAR" property="merShopName"/>
+        <result column="mer_mobile" jdbcType="VARCHAR" property="merMobile"/>
+        <result column="mer_address" jdbcType="VARCHAR" property="merAddress"/>
+    </resultMap>
+    <select id="inquireMerInfoById" resultMap="MerchantResultMap">
+        select * from
+        merchants
+        where mer_id = #{merId}
+    </select>
+    <!--注册-->
+    <insert id="registerMerchant" parameterType="com.zmy.entity.Merchant">
+        insert into
+        merchants(mer_username,mer_password,mer_shopName,mer_mobile,mer_address)
+        values
+        (#{merchant.merUsername},#{merchant.merPassword},#{merchant.merShopName},#{merchant.merMobile},#{mechant.merAddress})
+    </insert>
+    <!--登录-->
+    <resultMap id="loginResultMap" type="com.zmy.entity.Merchant">
+        <result column="mer_username" jdbcType="VARCHAR" property="merUsername"/>
+        <result column="mer_password" jdbcType="VARCHAR" property="merPassword"/>
+    </resultMap>
+    <select id="loginMerchant" resultMap="loginResultMap">
+        select mer_username mer_password from
+        merchants
+        where
+        mer_username = #{merUsername}
+        and
+        mer_password = #{merPassword}
+    </select>
+    <!--修改-->
+    <update id="modifyMerInfo" parameterType="com.zmy.entity.Merchant">
+        update merchants
+        set mer_username = #{merchant.merUsername},
+            mer_password = #{merchant.merPassword},
+            mer_shopName = #{merchant.merShopName},
+            mer_mobile = #{merchant.merMobile},
+            mer_address = #{merchant.merAddress}
+        where mer_id = #{merchant.merId}
+    </update>
+    <!--注销-->
+    <delete id="deleteMerchant" parameterType="com.zmy.entity.Merchant">
+        delete from
+        merchants
+        where
+        mer_id = #{merId}
+    </delete>
+</mapper>

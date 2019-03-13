@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zmy.mapper.ProductMapper">
+    <resultMap id="ProduceResultMap" type="com.zmy.entity.Product">
+        <result column="pro_name" jdbcType="VARCHAR" property="proName"/>
+        <result column="pro_price" jdbcType="DOUBLE" property="proPrice"/>
+        <result column="pro_inventory" jdbcType="INTEGER" property="proInventory"/>
+        <result column="mer_id" jdbcType="INTEGER" property="merId"/>
+    </resultMap>
+    <select id="inquireProductById" resultMap="ProduceResultMap">
+        select * from
+        products
+        where
+        pro_id = #{proId}
+    </select>
+
+    <!--查询-->
+    <!--<select id="getProductById" resultType="com.zmy.entity.Product">-->
+        <!--SELECT * FROM-->
+        <!--products-->
+        <!--WHERE-->
+        <!--pro_id = #{proId}-->
+    <!--</select>-->
+
+    <!--添加-->
+    <insert id="addProduct" parameterType="com.zmy.entity.Product">
+        insert into
+        products(pro_name,pro_price,pro_inventory,mer_id)
+        values
+        (#{product.proName}, #{product.proPrice},#{product.proInventory},#{product.merId})
+    </insert>
+    <!--修改-->
+    <update id="modifyProInfo" parameterType="com.zmy.entity.Product">
+        update products
+        set pro_name = #{product.proName},pro_price = #{product.proPrice},
+        pro_inventory = #{product.proInventory},mer_id = #{product.merId}
+        where pro_id = #{product.proId}
+    </update>
+    <!--删除-->
+    <delete id="deleteProduct" parameterType="com.zmy.entity.Product">
+        delete from
+        products
+        where
+        pro_id = #{proId}
+    </delete>
+
+</mapper>

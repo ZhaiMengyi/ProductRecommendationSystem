@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmy.mapper.ProductScoreMapper">
+    <insert id="rateProduct" parameterType="com.zmy.entity.ProductScore">
+        insert into
+        product_scores(user_id, pro_id, score)
+        values
+        (#{productScore.userId}, #{productScore.proId},#{productScore.score})
+    </insert>
+</mapper>
