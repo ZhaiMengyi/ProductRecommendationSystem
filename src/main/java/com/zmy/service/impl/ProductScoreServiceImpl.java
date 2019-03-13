@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductScoreServiceImpl implements ProductScoreService {
     @Autowired
     private ProductScoreMapper scoreMapper;
+
     @Override
     public Integer rateProduct(ProductScore productScore) {
         return scoreMapper.rateProduct(productScore);

@@ -27,6 +27,7 @@ public class ProductController {
 
     /**
      * 查询商品信息
+     *
      * @param proId
      * @return
      */
@@ -35,12 +36,13 @@ public class ProductController {
     //写入到response对象的body区，通常用来返回JSON数据或者是XML数据
     @ResponseBody
     //@RequestParam用于将指定的请求参数赋值给方法中的形参
-    public Message getProductById(@RequestParam(value = "proId") Integer proId){
-        return Message.success().addObject("product",productService.inquireProductById(proId));
+    public Message getProductById(@RequestParam(value = "proId") Integer proId) {
+        return Message.success().addObject("product", productService.inquireProductById(proId));
     }
 
     /**
      * 添加商品
+     *
      * @param proName
      * @param proPrice
      * @param proInventory
@@ -52,14 +54,15 @@ public class ProductController {
     public Message addProduct(@RequestParam(value = "proName") String proName,
                               @RequestParam(value = "proPrice") Double proPrice,
                               @RequestParam(value = "proInventory") Integer proInventory,
-                              @RequestParam(value = "merId") Integer merId){
-        productService.addProduct(new Product(proName,proPrice,proInventory,merId));
+                              @RequestParam(value = "merId") Integer merId) {
+        productService.addProduct(new Product(proName, proPrice, proInventory, merId));
         return Message.success("添加成功");
 
     }
 
     /**
      * 修改商品信息
+     *
      * @param proName
      * @param proPrice
      * @param proInventory
@@ -72,15 +75,15 @@ public class ProductController {
                                   @RequestParam(value = "proName") String proName,
                                   @RequestParam(value = "proPrice") Double proPrice,
                                   @RequestParam(value = "proInventory") Integer proInventory,
-                                  @RequestParam(value = "merId") Integer merId){
-        productService.modifyProInfo(new Product(proName,proPrice,proInventory,merId));
+                                  @RequestParam(value = "merId") Integer merId) {
+        productService.modifyProInfo(new Product(proName, proPrice, proInventory, merId));
         return Message.success("修改成功");
 
     }
 
     @RequestMapping(value = "deleteProduct")
     @ResponseBody
-    public Message deleteProduct(@RequestParam(value = "proId") Integer proId){
+    public Message deleteProduct(@RequestParam(value = "proId") Integer proId) {
         productService.deleteProduct(proId);
         return Message.success("删除成功");
     }

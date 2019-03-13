@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
+
     @Override
     public Integer addProToCarts(ShoppingCart shoppingCart) {
         return shoppingCartMapper.addProToCarts(shoppingCart);

@@ -17,6 +17,7 @@ public class UserController {
 
     /**
      * 注册用户
+     *
      * @param userName
      * @param userPassword
      * @param userMobile
@@ -25,16 +26,17 @@ public class UserController {
      */
     @RequestMapping(value = "registerUser")
     @ResponseBody
-    public Message registerUser(@RequestParam(value = "userName")String userName,
-                                @RequestParam(value = "userPassword")String userPassword,
-                                @RequestParam(value = "userMobile")String userMobile,
-                                @RequestParam(value = "userAddress")String userAddress){
-        userService.registerUser(new User(userName,userPassword,userMobile,userAddress));
+    public Message registerUser(@RequestParam(value = "userName") String userName,
+                                @RequestParam(value = "userPassword") String userPassword,
+                                @RequestParam(value = "userMobile") String userMobile,
+                                @RequestParam(value = "userAddress") String userAddress) {
+        userService.registerUser(new User(userName, userPassword, userMobile, userAddress));
         return Message.success("注册成功");
     }
 
     /**
      * 登录
+     *
      * @param userName
      * @param userPassword
      * @return
@@ -42,24 +44,26 @@ public class UserController {
     @RequestMapping(value = "loginUser")
     @ResponseBody
     public Message loginUser(@RequestParam(value = "userName") String userName,
-                             @RequestParam(value = "userPassword") String userPassword){
-        userService.loginUser(userName,userPassword);
+                             @RequestParam(value = "userPassword") String userPassword) {
+        userService.loginUser(userName, userPassword);
         return Message.success("登录成功");
     }
 
     /**
      * 查询
+     *
      * @param userId
      * @return
      */
     @RequestMapping(value = "inquireUserInfoById")
     @ResponseBody
-    public Message inquireUserInfoById(@RequestParam(value = "userId")Integer userId){
-        return Message.success().addObject("user",userService.inquireUserInfoById(userId));
+    public Message inquireUserInfoById(@RequestParam(value = "userId") Integer userId) {
+        return Message.success().addObject("user", userService.inquireUserInfoById(userId));
     }
 
     /**
      * 修改
+     *
      * @param userId
      * @param userName
      * @param userPassword
@@ -69,23 +73,24 @@ public class UserController {
      */
     @RequestMapping(value = "modifyUserInfo")
     @ResponseBody
-    public Message modifyUserInfo(@RequestParam(value = "userId")Integer userId,
-                                @RequestParam(value = "userName")String userName,
-                                @RequestParam(value = "userPassword")String userPassword,
-                                @RequestParam(value = "userMobile")String userMobile,
-                                @RequestParam(value = "userAddress")String userAddress){
-        userService.modifyUserInfo(new User(userName,userPassword,userMobile,userAddress));
+    public Message modifyUserInfo(@RequestParam(value = "userId") Integer userId,
+                                  @RequestParam(value = "userName") String userName,
+                                  @RequestParam(value = "userPassword") String userPassword,
+                                  @RequestParam(value = "userMobile") String userMobile,
+                                  @RequestParam(value = "userAddress") String userAddress) {
+        userService.modifyUserInfo(new User(userName, userPassword, userMobile, userAddress));
         return Message.success("修改成功");
     }
 
     /**
      * 注销
+     *
      * @param userId
      * @return
      */
     @RequestMapping(value = "deleteUser")
     @ResponseBody
-    public Message deleteUser(@RequestParam(value = "userId")Integer userId){
+    public Message deleteUser(@RequestParam(value = "userId") Integer userId) {
         userService.deleteUser(userId);
         return Message.success("注销成功");
     }

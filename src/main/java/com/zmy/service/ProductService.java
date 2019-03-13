@@ -12,6 +12,7 @@ import com.zmy.entity.Product;
 public interface ProductService {
     /**
      * 添加商品
+     *
      * @param product 添加的商品信息
      * @return 影响行数
      */
@@ -19,6 +20,7 @@ public interface ProductService {
 
     /**
      * 通过商品Id查询商品
+     *
      * @param proId 商品Id号
      * @return 商品信息
      */
@@ -26,6 +28,7 @@ public interface ProductService {
 
     /**
      * 修改商品信息
+     *
      * @param product 修改后的商品信息
      * @return 影响行数
      */
@@ -33,6 +36,7 @@ public interface ProductService {
 
     /**
      * 删除商品
+     *
      * @param proId 商品Id号
      * @return 影响行数
      */

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserService {
     /**
      * 注册用户账号
+     *
      * @param user 用户账号信息
      * @return 影响行数
      */
@@ -13,7 +14,8 @@ public interface UserService {
 
     /**
      * 用户登录
-     * @param userName 用户名
+     *
+     * @param userName     用户名
      * @param userPassword 用户密码
      * @return 影响行数
      */
@@ -21,6 +23,7 @@ public interface UserService {
 
     /**
      * 查看个人信息
+     *
      * @param userId 用户Id
      * @return 个人信息
      */
@@ -28,6 +31,7 @@ public interface UserService {
 
     /**
      * 修改个人信息
+     *
      * @param user 修改后的个人信息
      * @return 影响行数
      */
@@ -35,6 +39,7 @@ public interface UserService {
 
     /**
      * 注销用户账号
+     *
      * @param userId 用户Id
      * @return 影响行数
      */

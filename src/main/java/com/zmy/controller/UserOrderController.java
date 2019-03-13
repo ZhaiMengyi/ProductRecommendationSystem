@@ -19,11 +19,11 @@ public class UserOrderController {
 
     @RequestMapping(value = "order")
     @ResponseBody
-    public Message order(@RequestParam(value = "userId")Integer userId,
-                         @RequestParam(value = "proId")Integer proId,
-                         @RequestParam(value = "ordTime")Date ordTime,
-                         @RequestParam(value = "ordAddress")String ordAddress){
-        userOrderService.order(new UserOrder(userId,proId,ordTime,ordAddress));
+    public Message order(@RequestParam(value = "userId") Integer userId,
+                         @RequestParam(value = "proId") Integer proId,
+                         @RequestParam(value = "ordTime") Date ordTime,
+                         @RequestParam(value = "ordAddress") String ordAddress) {
+        userOrderService.order(new UserOrder(userId, proId, ordTime, ordAddress));
         return Message.success("订单支付成功");
     }
 }
