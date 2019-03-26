@@ -14,4 +14,12 @@
         where
         cart_id = #{cartId}
     </delete>
+    <select id="queryCart" resultType="com.zmy.dto.CartDTO">
+        select
+          pro_id, pro_num
+        from
+          shopping_carts
+        where
+          user_id = #{userId}
+    </select>
 </mapper>

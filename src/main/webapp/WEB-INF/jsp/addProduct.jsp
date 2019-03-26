@@ -11,12 +11,16 @@
     <meta charset="utf-8">
 </head>
 <body>
+
 <form action="${APP_PATH}/product/inquireProductById" method="post">
-    <label for="proId">商品Id</label>
-    <input type="text" id="proId" name="proId" maxLength="50"/>
-    <input type="submit" value="查询"/>
+    <label for="proName">商品名称</label>
+    <input type="text" id="proName" name="proId" maxLength="50"/>
+    <label for="proPrice">商品价格</label>
+    <input type="text" id="proPrice" name="proPrice" maxLength="50"/>
+    <label for="proInventory">商品库存</label>
+    <input type="text" id="proInventory" name="proPrice" maxLength="50"/>
+    <input type="submit" value="添加"/>
 </form>
 
-<a href="${APP_PATH}/merchant/pages/addProduct">商铺后台功能</a>
 </body>
 </html>
