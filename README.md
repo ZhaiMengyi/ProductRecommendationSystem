@@ -31,8 +31,8 @@ A product recommendation system using Apache Spark with Scala and SSM(Graduation
     
 * 订单
     - [x] 创建订单
-    - [x] 支付订单
-    - [x] 取消订单
+    - [x] 支付订单（标记）
+    - [x] 取消订单（标记）
     
 * 评分
     - [x] 已消费用户评价
