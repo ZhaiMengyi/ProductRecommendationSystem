@@ -30,4 +30,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public List<CartDTO> queryCart(Integer userId) {
         return shoppingCartMapper.queryCart(userId);
     }
+
+    @Override
+    public Integer modifyProNum(Integer cartId, Integer proNum) {
+        return shoppingCartMapper.modifyProNum(cartId, proNum);
+    }
 }

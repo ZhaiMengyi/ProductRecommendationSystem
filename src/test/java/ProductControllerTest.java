@@ -18,6 +18,9 @@ import javax.annotation.Resource;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * 商品功能测试类
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

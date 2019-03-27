@@ -65,10 +65,36 @@ public class ShoppingCartController {
      * @param cartId
      * @return
      */
-    @RequestMapping(value = "deleteProFromCarts")
+    @RequestMapping(value = "deleteProFromCart")
     @ResponseBody
-    public Message deleteProFromCarts(@RequestParam(value = "cartId") Integer cartId) {
-        shoppingCartService.deleteProFromCarts(cartId);
-        return Message.success("删除成功");
+    public Message deleteProFromCart(@RequestParam(value = "cartId") Integer cartId) {
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        if (userId != null && userId != 0) {
+            Integer result = shoppingCartService.deleteProFromCarts(cartId);
+            if (result > 0) {
+                return Message.success("删除成功");
+            }
+
+            return Message.error("删除失败");
+        }
+
+        return Message.error("请重新登录");
+    }
+
+    @RequestMapping(value = "modifyProNum")
+    @ResponseBody
+    public Message modifyProNum(@RequestParam(value = "cartId") Integer cartId,
+                                @RequestParam(value = "proNum") Integer proNum){
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        if (userId != null && userId != 0) {
+            Integer result = shoppingCartService.modifyProNum(cartId, proNum);
+            if (result > 0) {
+                return Message.success("修改成功");
+            }
+
+            return Message.error("修改失败");
+        }
+
+        return Message.error("请重新登录");
     }
 }

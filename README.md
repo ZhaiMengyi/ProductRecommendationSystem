@@ -26,15 +26,16 @@ A product recommendation system using Apache Spark with Scala and SSM(Graduation
 * 购物车
     - [x] 添加商品
     - [x] 列出购物车所有商品
-    - [ ] 删除购物车内商品
+    - [x] 修改购物车商品数量
+    - [x] 删除购物车内商品
     
 * 订单
-    - [ ] 创建订单
-    - [ ] 修改订单状态
-    - [ ] 取消订单
+    - [x] 创建订单
+    - [x] 支付订单
+    - [x] 取消订单
     
 * 评分
-    - [ ] 已消费用户评价
+    - [x] 已消费用户评价
     
 * 推荐商品
     - [ ] 推荐

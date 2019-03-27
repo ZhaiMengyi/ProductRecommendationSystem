@@ -1,5 +1,4 @@
-import com.zmy.controller.ShoppingCartController;
-import org.apache.taglibs.standard.util.EscapeXML;
+import com.zmy.controller.UserOrderController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,108 +17,86 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * 购物车测试类
+ * 订单功能测试类
  *
  **/
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @Transactional(transactionManager = "transactionManager")
 @ContextConfiguration(locations = "classpath:spring/*.xml")
 @Rollback(value = false)
-public class CartControllerTest {
+public class OrderControllerTest {
 
     private MockMvc mockMvc;
 
     @Resource
-    private ShoppingCartController shoppingCartController;
+    private UserOrderController userOrderController;
 
     @Before
     public void setup(){
-        mockMvc = MockMvcBuilders.standaloneSetup(shoppingCartController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(userOrderController).build();
     }
 
     /**
-     * 测试顾客添加商品到购物车
+     * 测试创建订单
      */
     @Test
-    public void testAddProToCart() throws Exception {
+    public void testCreateOrder() throws Exception {
         String result = mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/shoppingCarts/addProToCarts")
+                        .put("/userOrder/createOrder")
                         .sessionAttr("userId",1)
-                        .param("proId","1")
-                        .param("proNum","2"))
-                .andDo(print())
+                        .param("proId","2")
+                        .param("ordAddress","四川省成都市高新西区百叶路一号"))
                 .andExpect(status().isOk())
+                .andDo(print())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-
         System.out.println("========");
         System.out.println("返回结果：" + result);
         System.out.println("========");
     }
 
     /**
-     * 查询购物车内所有商品及数量
+     * 测试支付订单（修改订单状态）
      */
     @Test
-    public void testQueryCart() throws Exception {
+    public void testPayOrder() throws Exception {
         String result = mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/shoppingCarts/queryCart")
-                        .sessionAttr("userId",1))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        System.out.println("========");
-        System.out.println("返回结果：" + result);
-        System.out.println("========");
-    }
-
-    /**
-     * 从购物车移除商品
-     */
-    @Test
-    public void testRemoveProFromCart() throws Exception {
-        String result = mockMvc.perform(
-                MockMvcRequestBuilders
-                        .delete("/shoppingCarts/deleteProFromCart")
+                        .patch("/userOrder/payOrder")
                         .sessionAttr("userId",1)
-                        .param("cartId", "1"))
-                .andDo(print())
+                        .param("ordId","2"))
                 .andExpect(status().isOk())
+                .andDo(print())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-
         System.out.println("========");
         System.out.println("返回结果：" + result);
         System.out.println("========");
     }
 
     /**
-     * 测试修改购物车商品数量
+     * 测试取消订单（修改订单状态）
      */
     @Test
-    public void testModifyProNum() throws Exception {
+    public void cancelOrder() throws Exception {
         String result = mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/shoppingCarts/modifyProNum")
+                        .patch("/userOrder/cancelOrder")
                         .sessionAttr("userId",1)
-                        .param("cartId", "2")
-                        .param("proNum","100"))
-                .andDo(print())
+                        .param("ordId","1"))
                 .andExpect(status().isOk())
+                .andDo(print())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-
         System.out.println("========");
         System.out.println("返回结果：" + result);
         System.out.println("========");
     }
+
 }

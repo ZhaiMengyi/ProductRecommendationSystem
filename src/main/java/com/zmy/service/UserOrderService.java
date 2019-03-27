@@ -8,9 +8,11 @@ public interface UserOrderService {
     /**
      * 订单信息
      *
-     * @param userOrder
      * @return 影响行数
      */
-    Integer order(UserOrder userOrder);
+    Integer payOrder(Integer ordId);
 
+    Integer createOrder(UserOrder userOrder);
+
+    Integer cancelOrder(Integer ordId);
 }

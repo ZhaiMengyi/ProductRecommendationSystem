@@ -29,4 +29,12 @@ public interface ShoppingCartService {
      * @return
      */
     List<CartDTO> queryCart(Integer userId);
+
+    /**
+     * 修改购物车商品数量
+     * @param cartId
+     * @param proNum
+     * @return
+     */
+    Integer modifyProNum(Integer cartId, Integer proNum);
 }

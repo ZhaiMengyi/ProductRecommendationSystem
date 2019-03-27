@@ -15,4 +15,6 @@ public interface ShoppingCartMapper {
     Integer deleteProFromCarts(Integer cartId);
 
     List<CartDTO> queryCart(Integer userId);
+
+    Integer modifyProNum(@Param(value = "cartId") Integer cartId, @Param(value = "proNum") Integer proNum);
 }

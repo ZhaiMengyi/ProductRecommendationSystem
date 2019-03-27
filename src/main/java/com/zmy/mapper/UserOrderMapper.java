@@ -7,5 +7,10 @@ import org.springframework.stereotype.Repository;
 
 @Mapper
 public interface UserOrderMapper {
-    Integer order(@Param(value = "userOrder") UserOrder userOrder);
+    Integer payOrder(@Param(value = "ordId") Integer ordId);
+
+
+    Integer createOrder(@Param(value = "userOrder") UserOrder userOrder);
+
+    Integer cancelOrder(Integer ordId);
 }

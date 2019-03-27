@@ -19,8 +19,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * 商家操作测试类
  *
- * @author Chen Rui
- * @version 1.0
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
