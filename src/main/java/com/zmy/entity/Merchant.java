@@ -7,6 +7,7 @@ public class Merchant {
     private String merShopName;
     private String merMobile;
     private String merAddress;
+    private Integer merStatus;
 
     public Merchant() {
     }
@@ -76,6 +77,14 @@ public class Merchant {
         this.merAddress = merAddress;
     }
 
+    public Integer getMerStatus() {
+        return merStatus;
+    }
+
+    public void setMerStatus(Integer merStatus) {
+        this.merStatus = merStatus;
+    }
+
     @Override
     public String toString() {
         return "Merchant{" +
@@ -85,6 +94,7 @@ public class Merchant {
                 ", merShopName='" + merShopName + '\'' +
                 ", merMobile='" + merMobile + '\'' +
                 ", merAddress='" + merAddress + '\'' +
+                ", merStatus=" + merStatus +
                 '}';
     }
 }

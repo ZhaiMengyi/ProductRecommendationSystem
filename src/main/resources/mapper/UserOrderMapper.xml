@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zmy.mapper.UserOrderMapper">
-    <insert id="order" parameterType="com.zmy.entity.UserOrder">
+    <insert id="createOrder" parameterType="com.zmy.entity.UserOrder">
         insert into
-        user_orders(user_id, pro_id, ord_time, ord_address)
+          user_orders(user_id, pro_id, ord_time, ord_address)
         values
-        (#{userOrder.userId}, #{userOrder.proId}, #{userOrder.ordTime}, #{userOrder.ordAddress})
+          (#{userOrder.userId}, #{userOrder.proId}, #{userOrder.ordTime}, #{userOrder.ordAddress})
     </insert>
+    <update id="payOrder">
+        update user_orders set ord_status = 1 where ord_id = #{ordId} and ord_status = 0
+    </update>
+    <update id="cancelOrder">
+        update user_orders set ord_status = -1 where ord_id = #{ordId} and ord_status = 0
+    </update>
 
 </mapper>

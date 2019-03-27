@@ -7,6 +7,14 @@
         values
         (#{shoppingCart.userId}, #{shoppingCart.proId}, #{shoppingCart.proNum})
     </insert>
+    <update id="modifyProNum">
+        update
+          shopping_carts
+        set
+          pro_num = #{proNum}
+        where
+          cart_id = #{cartId}
+    </update>
 
     <delete id="deleteProFromCarts" parameterType="com.zmy.entity.ShoppingCart">
         delete from
@@ -14,4 +22,12 @@
         where
         cart_id = #{cartId}
     </delete>
+    <select id="queryCart" resultType="com.zmy.dto.CartDTO">
+        select
+          pro_id, pro_num
+        from
+          shopping_carts
+        where
+          user_id = #{userId}
+    </select>
 </mapper>

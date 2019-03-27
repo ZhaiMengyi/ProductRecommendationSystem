@@ -1,8 +1,11 @@
 package com.zmy.mapper;
 
 import com.zmy.entity.Merchant;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Mapper
 public interface MerchantMapper {
     Integer registerMerchant(@Param(value = "merchant") Merchant merchant);
 

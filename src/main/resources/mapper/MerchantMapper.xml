@@ -8,6 +8,7 @@
         <result column="mer_shopName" jdbcType="VARCHAR" property="merShopName"/>
         <result column="mer_mobile" jdbcType="VARCHAR" property="merMobile"/>
         <result column="mer_address" jdbcType="VARCHAR" property="merAddress"/>
+        <result column="mer_status" jdbcType="INTEGER" property="merStatus"/>
     </resultMap>
     <select id="inquireMerInfoById" resultMap="MerchantResultMap">
         select * from
@@ -19,20 +20,19 @@
         insert into
         merchants(mer_username,mer_password,mer_shopName,mer_mobile,mer_address)
         values
-        (#{merchant.merUsername},#{merchant.merPassword},#{merchant.merShopName},#{merchant.merMobile},#{mechant.merAddress})
+        (#{merchant.merUsername},#{merchant.merPassword},#{merchant.merShopName},#{merchant.merMobile},#{merchant.merAddress})
     </insert>
+
     <!--登录-->
-    <resultMap id="loginResultMap" type="com.zmy.entity.Merchant">
-        <result column="mer_username" jdbcType="VARCHAR" property="merUsername"/>
-        <result column="mer_password" jdbcType="VARCHAR" property="merPassword"/>
-    </resultMap>
-    <select id="loginMerchant" resultMap="loginResultMap">
-        select mer_username mer_password from
-        merchants
+    <select id="loginMerchant" resultType="integer">
+        select
+          mer_id
+        from
+          merchants
         where
-        mer_username = #{merUsername}
+          mer_username = #{merUsername}
         and
-        mer_password = #{merPassword}
+          mer_password = #{merPassword}
     </select>
     <!--修改-->
     <update id="modifyMerInfo" parameterType="com.zmy.entity.Merchant">
@@ -45,10 +45,12 @@
         where mer_id = #{merchant.merId}
     </update>
     <!--注销-->
-    <delete id="deleteMerchant" parameterType="com.zmy.entity.Merchant">
-        delete from
-        merchants
+    <delete id="deleteMerchant" parameterType="integer">
+        update
+          merchants
+        set
+          mer_status = 1
         where
-        mer_id = #{merId}
+          mer_id = #{merId}
     </delete>
 </mapper>

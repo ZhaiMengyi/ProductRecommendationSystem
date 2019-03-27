@@ -1,7 +1,10 @@
 package com.zmy.service;
 
+import com.zmy.dto.CartDTO;
 import com.zmy.entity.Product;
 import com.zmy.entity.ShoppingCart;
+
+import java.util.List;
 
 public interface ShoppingCartService {
     /**
@@ -19,4 +22,19 @@ public interface ShoppingCartService {
      * @return 影响行数
      */
     Integer deleteProFromCarts(Integer cartId);
+
+    /**
+     * 查询购物车内所有商品
+     * @param userId
+     * @return
+     */
+    List<CartDTO> queryCart(Integer userId);
+
+    /**
+     * 修改购物车商品数量
+     * @param cartId
+     * @param proNum
+     * @return
+     */
+    Integer modifyProNum(Integer cartId, Integer proNum);
 }

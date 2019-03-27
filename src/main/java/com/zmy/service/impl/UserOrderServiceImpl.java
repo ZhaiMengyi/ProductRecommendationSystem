@@ -14,8 +14,17 @@ public class UserOrderServiceImpl implements UserOrderService {
     private UserOrderMapper orderMapper;
 
     @Override
-    public Integer order(UserOrder userOrder) {
-        return orderMapper.order(userOrder);
+    public Integer payOrder(Integer ordId) {
+        return orderMapper.payOrder(ordId);
     }
 
+    @Override
+    public Integer createOrder(UserOrder userOrder) {
+        return orderMapper.createOrder(userOrder);
+    }
+
+    @Override
+    public Integer cancelOrder(Integer ordId) {
+        return orderMapper.cancelOrder(ordId);
+    }
 }

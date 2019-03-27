@@ -15,14 +15,6 @@
         pro_id = #{proId}
     </select>
 
-    <!--查询-->
-    <!--<select id="getProductById" resultType="com.zmy.entity.Product">-->
-        <!--SELECT * FROM-->
-        <!--products-->
-        <!--WHERE-->
-        <!--pro_id = #{proId}-->
-    <!--</select>-->
-
     <!--添加-->
     <insert id="addProduct" parameterType="com.zmy.entity.Product">
         insert into
@@ -30,12 +22,13 @@
         values
         (#{product.proName}, #{product.proPrice},#{product.proInventory},#{product.merId})
     </insert>
+
     <!--修改-->
     <update id="modifyProInfo" parameterType="com.zmy.entity.Product">
         update products
         set pro_name = #{product.proName},pro_price = #{product.proPrice},
         pro_inventory = #{product.proInventory},mer_id = #{product.merId}
-        where pro_id = #{product.proId}
+        where pro_id = #{product.proId} and mer_id = #{product.merId}
     </update>
     <!--删除-->
     <delete id="deleteProduct" parameterType="com.zmy.entity.Product">

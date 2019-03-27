@@ -1,18 +1,17 @@
 package com.zmy.entity;
 
-import java.util.Date;
 
 public class UserOrder {
     private Integer ordId;
     private Integer userId;
     private Integer proId;
-    private Date ordTime;
+    private String ordTime;
     private String ordAddress;
 
     public UserOrder() {
     }
 
-    public UserOrder(Integer ordId, Integer userId, Integer proId, Date ordTime, String ordAddress) {
+    public UserOrder(Integer ordId, Integer userId, Integer proId, String ordTime, String ordAddress) {
         this.ordId = ordId;
         this.userId = userId;
         this.proId = proId;
@@ -20,12 +19,13 @@ public class UserOrder {
         this.ordAddress = ordAddress;
     }
 
-    public UserOrder(Integer userId, Integer proId, Date ordTime, String ordAddress) {
+    public UserOrder(Integer userId, Integer proId, String ordTime, String ordAddress) {
         this.userId = userId;
         this.proId = proId;
         this.ordTime = ordTime;
         this.ordAddress = ordAddress;
     }
+
 
     public Integer getOrdId() {
         return ordId;
@@ -51,11 +51,11 @@ public class UserOrder {
         this.proId = proId;
     }
 
-    public Date getOrdTime() {
+    public String getOrdTime() {
         return ordTime;
     }
 
-    public void setOrdTime(Date ordTime) {
+    public void setOrdTime(String ordTime) {
         this.ordTime = ordTime;
     }
 
@@ -66,7 +66,6 @@ public class UserOrder {
     public void setOrdAddress(String ordAddress) {
         this.ordAddress = ordAddress;
     }
-
 
     @Override
     public String toString() {
