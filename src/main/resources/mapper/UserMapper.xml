@@ -8,10 +8,11 @@
         <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
         <result column="user_mobile" jdbcType="VARCHAR" property="userMobile"/>
         <result column="user_address" jdbcType="VARCHAR" property="userAddress"/>
-        <result column="user_status" jdbcType="INTEGER" property="userStatus"/>
     </resultMap>
     <select id="inquireUserInfoById" resultMap="UserResultMap">
-        select * from
+        select
+        *
+        from
         users
         where
         user_id = #{userId}
@@ -25,9 +26,10 @@
         (#{user.userName}, #{user.userPassword},#{user.userMobile},#{user.userAddress})
     </insert>
 
-    <select id="loginUser" resultType="integer">
+    <!--登录-->
+    <select id="loginUser" resultMap="UserResultMap">
         select
-          user_id
+          *
         from
           users
         where
@@ -35,6 +37,7 @@
         and
           user_password = #{userPassword}
     </select>
+
     <!--修改-->
     <update id="modifyUserInfo" parameterType="com.zmy.entity.User">
         update users
@@ -47,12 +50,9 @@
 
     <!--删除-->
     <delete id="deleteUser" parameterType="com.zmy.entity.User">
-        update
+        delete from
           users
-        set
-          user_status = 1
         where
           user_id = #{userId}
     </delete>
-
 </mapper>

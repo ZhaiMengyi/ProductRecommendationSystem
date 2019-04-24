@@ -72,10 +72,7 @@ public class MerchantController {
     @ResponseBody
     public Message inquireMerInfoFromCus(@RequestParam(value = "merId") Integer merId) {
         Merchant merchant = merchantService.inquireMerInfoById(merId);
-        if (merchant != null && merchant.getMerStatus() != 1) {
-            return Message.success("查询成功").addObject("merchant", merchant);
-        }
-        return Message.error("抱歉，没有任何数据");
+        return Message.success("查询成功").addObject("merchant", merchant);
     }
 
     /**

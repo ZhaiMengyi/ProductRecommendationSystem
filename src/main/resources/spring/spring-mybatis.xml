@@ -9,16 +9,13 @@
     <!--配置整合mybatis-->
     <!--配置参数-->
     <context:property-placeholder location="classpath:db.properties"/>
-
     <!--数据库连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
-
         <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
-
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="3" />
         <property name="minIdle" value="3" />
@@ -40,8 +37,6 @@
         <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
         <property name="filters" value="stat" />
     </bean>
-
-
     <!--配置sqlSessionFactory对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -51,7 +46,6 @@
         <property name="typeAliasesPackage" value="com.zmy.entity" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-
     </bean>
 
     <!--Mybatis批量插入的Bean-->
@@ -64,5 +58,4 @@
         <property name="basePackage" value="com.zmy.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
 </beans>

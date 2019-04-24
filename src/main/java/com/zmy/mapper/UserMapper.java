@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
     Integer registerUser(@Param(value = "user") User user);
 
-    Integer loginUser(@Param(value = "userName") String userName, @Param(value = "userPassword") String userPassword);
+    User loginUser(@Param(value = "userName") String userName, @Param(value = "userPassword") String userPassword);
 
     User inquireUserInfoById(Integer userId);
 

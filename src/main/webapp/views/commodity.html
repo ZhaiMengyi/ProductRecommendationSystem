@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../assets/libs/jquery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../assets/libs/layui/css/layui.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body>
+
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <i class="layui-icon layui-icon-home"></i>
+            <a href="#">首页</a>
+        </p>
+        <div class="sn-quick-menu">
+            <div class="login">
+                <a href="javascript:myInfo();"><i class="layui-icon">&#xe770;</i>个人信息</a>
+            </div>
+            <div class="login">
+                <a href="javascript:updateInfo();"><i class="layui-icon">&#xe631;</i>修改信息</a>
+            </div>
+            <div class="login">
+                <a href="shopcart.html"><i class="layui-icon">&#xe657;</i>购物车</a>
+            </div>
+            <div class="login">
+                <a href="javascript:loginOut();"><i class="layui-icon">&#xe66d;</i>退出登录</a>
+            </div>
+            <div class="login">
+                <a href="javascript:deleteUser();"><i class="layui-icon">&#xe640;</i>注销用户</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="headerLayout w1200">
+        <div class="headerCon">
+            <h1 class="mallLogo">
+                <a href="#" title="Frog Mall">
+                    <img src="../img/logo.png">
+                </a>
+            </h1>
+            <div class="mallSearch">
+                <form action="" class="layui-form" novalidate>
+                    <input type="text" name="title" required lay-verify="required" autocomplete="off"
+                           class="layui-input" placeholder="请输入需要的商品">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">
+                        <i class="layui-icon layui-icon-search"></i>
+                    </button>
+                    <input type="hidden" name="" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="content content-nav-base commodity-content">
+    <div class="main-nav">
+        <div class="inner-cont0">
+            <div class="inner-cont1 w1200">
+                <div class="inner-cont2">
+                    <a href="commodity.html" class="active">所有商品</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="commod-cont-wrap">
+        <div class="commod-cont w1200 layui-clear">
+            <div class="left-nav">
+                <div class="title">所有分类</div>
+                <div class="list-box">
+                    <dl>
+                        <dt>女装</dt>
+                        <dd><a href="javascript:;">半身裙</a></dd>
+                        <dd><a href="javascript:;">连衣裙</a></dd>
+                        <dd><a href="javascript:;">毛衣</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>男装</dt>
+                        <dd><a href="javascript:;">休闲裤</a></dd>
+                        <dd><a href="javascript:;">牛仔裤</a></dd>
+                        <dd><a href="javascript:;">衬衫</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>鞋靴</dt>
+                        <dd><a href="javascript:;">帆布鞋</a></dd>
+                        <dd><a href="javascript:;">运动鞋</a></dd>
+                        <dd><a href="javascript:;">单鞋</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>食品</dt>
+                        <dd><a href="javascript:;">巧克力</a></dd>
+                        <dd><a href="javascript:;">方便面</a></dd>
+                        <dd><a href="javascript:;">饼干</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>箱包</dt>
+                        <dd><a href="javascript:;">单肩包</a></dd>
+                        <dd><a href="javascript:;">双肩包</a></dd>
+                        <dd><a href="javascript:;">钱包</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="right-cont-wrap">
+                <div class="right-cont">
+                    <div class="cont-list layui-clear" id="list-cont">
+
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/s_img2.png" style="width: 280px; height: 280px"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">施华洛世奇小天鹅</p>
+                                <p class="price">
+                                    <span class="pri">￥1600</span>
+                                    <span class="nub">999付款</span>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img1.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img2.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img3.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img1.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img2.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img3.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img1.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img2.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img3.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img1.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img2.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img3.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img1.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img2.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <a href="javascript:;"><img src="../img/paging_img3.jpg"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">森系小清新四件套</p>
+                                <p class="price">
+                                    <span class="pri">￥200</span>
+                                    <span class="nub">1266付款</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="demo0" style="text-align: center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="../assets/libs/layui/layui.all.js"></script>
+<script type="text/javascript" src="../assets/js/comment.js"></script>
+<script type="text/javascript" src="../assets/js/commodity.js"></script>
+<!-- 修改信息弹窗 -->
+<script type="text/html" id="pswModel">
+    <form id="updateForm" class="layui-form model-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input name="userName" placeholder="请输入用户名" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input name="userPassword" placeholder="请输入密码" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-block">
+                <input name="userMobile" placeholder="请输入手机号" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-input-block">
+                <input name="userAddress" placeholder="请输入地址" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary" type="button" id="updateBtnCancel">取消</button>
+            <button class="layui-btn" lay-filter="updateBtnSubmit" lay-submit data-type="reload">保存</button>
+        </div>
+    </form>
+</script>
+
+<!--<script>-->
+    <!--layui.config({-->
+        <!--base: '../assets/js/' //你存放新模块的目录，注意，不是layui的模块目录-->
+    <!--}).use(['mm', 'laypage', 'jquery'], function () {-->
+        <!--var laypage = layui.laypage,-->
+            <!--$ = layui.$,-->
+            <!--mm = layui.mm;-->
+        <!--laypage.render({-->
+            <!--elem: 'demo0'-->
+            <!--, count: 100 //数据总数-->
+        <!--});-->
+        <!--$('.sort a').on('click', function () {-->
+            <!--$(this).addClass('active').siblings().removeClass('active');-->
+        <!--})-->
+        <!--$('.list-box dt').on('click', function () {-->
+            <!--if ($(this).attr('off')) {-->
+                <!--$(this).removeClass('active').siblings('dd').show()-->
+                <!--$(this).attr('off', '')-->
+            <!--} else {-->
+                <!--$(this).addClass('active').siblings('dd').hide()-->
+                <!--$(this).attr('off', true)-->
+            <!--}-->
+        <!--})-->
+
+    <!--});-->
+<!--</script>-->
+
+
+</body>
+</html>

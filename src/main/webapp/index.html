@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/libs/layui/css/layui.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body id="list-cont">
+  <div class="site-nav-bg">
+    <div class="site-nav w1200">
+      <p class="sn-back-home">
+        <i class="layui-icon layui-icon-home"></i>
+        <a href="#">首页</a>
+      </p>
+      <div class="sn-quick-menu">
+        <div class="login"><a href="views/login.html">登录</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="headerLayout w1200">
+      <div class="headerCon">
+        <h1 class="mallLogo">
+          <a href="#" title="Frog Mall">
+            <img src="img/logo.png">
+          </a>
+        </h1>
+        <div class="mallSearch">
+          <form action="" class="layui-form" novalidate>
+            <input type="text" name="title" required  lay-verify="required" autocomplete="off"
+                   class="layui-input" placeholder="请输入需要的商品">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">
+                <i class="layui-icon layui-icon-search"></i>
+            </button>
+            <input type="hidden" name="" value="">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="main-nav">
+      <div class="inner-cont0">
+        <div class="inner-cont1 w1200">
+          <div class="inner-cont2">
+            <a href="views/commodity.html" class="active">所有商品</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="category-con">
+      <div class="category-inner-con w1200">
+        <div class="category-type">
+          <h3>全部分类</h3>
+        </div>
+        <div class="category-tab-content">
+          <div class="nav-con">
+            <ul class="normal-nav layui-clear">
+              <li class="nav-item">
+                <div class="title">女装</div>
+                <p><a href="#">半身裙</a><a href="#">连衣裙</a><a href="#">毛衣</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">男装</div>
+                <p><a href="#">休闲裤</a><a href="#">牛仔裤</a><a href="#">衬衫</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">鞋靴</div>
+                <p><a href="#">帆布鞋</a><a href="#">运动鞋</a><a href="#">单鞋</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">食品</div>
+                <p><a href="#">巧克力</a><a href="#">方便面</a><a href="#">饼干</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">箱包</div>
+                <p><a href="#">单肩包</a><a href="#">双肩包</a><a href="#">钱包</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">百货</div>
+                <p><a href="#">平底锅</a><a href="#">煤气灶</a><a href="#">毛巾</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item">
+                <div class="title">家电</div>
+                <p><a href="#">洗衣机</a><a href="#">热水器</a><a href="#">空调</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+              <li class="nav-item nobor">
+                <div class="title">母婴</div>
+                <p><a href="#">孕妇装</a><a href="#">纸尿裤</a><a href="#">奶粉</a></p>
+                <i class="layui-icon layui-icon-right"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="category-banner">
+        <div class="w1200">
+          <img src="img/banner1.jpg">
+        </div>
+      </div>
+    </div>
+
+    <div class="floors">
+      <div class="sk">
+        <div class="sk_inner w1200">
+          <div class="sk_hd">
+            <a href="javascript:;">
+              <img src="img/s_img1.jpg">
+            </a>
+          </div>
+          <div class="sk_bd">
+            <div class="layui-carousel" id="test1">
+              <div carousel-item>
+                <div class="item-box">
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img2.png"></a>
+                    <div class="title">施华洛世奇</div>
+                    <div class="price">
+                      <span>￥1599.00</span>
+                      <del>￥1799.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img3.png"></a>
+                    <div class="title">三只松鼠 碧根果</div>
+                    <div class="price">
+                      <span>￥49.00</span>
+                      <del>￥99.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img4.png"></a>
+                    <div class="title">优雅女鞋</div>
+                    <div class="price">
+                      <span>￥158.00</span>
+                      <del>￥299.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img5.png"></a>
+                    <div class="title">新鲜脐橙</div>
+                    <div class="price">
+                      <span>￥19.00</span>
+                      <del>￥9.90</del>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-box">
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img6.png"></a>
+                    <div class="title">好看的大衣</div>
+                    <div class="price">
+                      <span>￥449.00</span>
+                      <del>￥999.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img7.png"></a>
+                    <div class="title">优质皮包</div>
+                    <div class="price">
+                      <span>￥249.00</span>
+                      <del>￥399.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img8.png"></a>
+                    <div class="title">好吃的牛肉</div>
+                    <div class="price">
+                      <span>￥69.00</span>
+                      <del>￥89.00</del>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <a href="javascript:;"><img src="img/s_img9.png"></a>
+                    <div class="title">绿色的水杯</div>
+                    <div class="price">
+                      <span>￥19.00</span>
+                      <del>￥39.00</del>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+
+    <div class="product-list-box" id="product-list-box">
+      <div class="product-list-cont w1200">
+        <h4>更多推荐</h4>
+        <div class="product-item-box layui-clear">
+          <div class="list-item">
+            <a href="javascript:;"><img src="img/more1.png"></a>
+            <p>Chanel黑管丝绒口红</p>
+            <span>￥238.00</span>
+          </div>
+          <div class="list-item">
+            <a href="javascript:;"><img src="img/more2.png"></a>
+            <p>兰蔻 秋冬哑光红管黑管口红</p>
+            <span>￥258.00</span>
+          </div>
+          <div class="list-item">
+            <a href="javascript:;"><img src="img/more3.png"></a>
+            <p>TF圣诞限量Boys小黑管礼盒</p>
+            <span>￥888.00</span>
+          </div>
+          <div class="list-item">
+            <a href="javascript:;"><img src="img/more4.png"></a>
+            <p>LANCOME秋冬限量迷雾红管唇膏</p>
+            <span>￥275.00</span>
+          </div>
+          <div class="list-item">
+            <a href="javascript:;"><img src="img/more5.png"></a>
+            <p>DIOR迪奥限量红管口红</p>
+            <span>￥228.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="ng-promise-box">
+      <div class="ng-promise w1200">
+        <p class="text">
+          <a class="icon1" href="javascript:;">7天无理由退换货</a>
+          <a class="icon2" href="javascript:;">满99元全场免邮</a>
+          <a class="icon3" style="margin-right: 0" href="javascript:;">100%品质保证</a>
+        </p>
+      </div>
+    </div>
+    <div class="mod_help w1200">                                     
+      <p>
+        <a href="javascript:;">关于我们</a>
+        <span>|</span>
+        <a href="javascript:;">帮助中心</a>
+        <span>|</span>
+        <a href="javascript:;">售后服务</a>
+        <span>|</span>
+        <a href="javascript:;">关于货源</a>
+      </p>
+      <p class="coty">Frog Mall版权所有 &copy; 2019-2020</p>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript" src="assets/libs/layui/layui.js"></script>
+  <script type="text/javascript">
+layui.config({
+    base: 'assets/js/' //你存放新模块的目录，注意，不是layui的模块目录
+  }).use(['mm','carousel'],function(){
+      var carousel = layui.carousel,
+     mm = layui.mm;
+     var option = {
+        elem: '#test1'
+        ,width: '100%' //设置容器宽度
+        ,arrow: 'always'
+        ,height:'298' 
+        ,indicator:'none'
+      }
+      carousel.render(option);
+});
+  </script>
+</body>
+</html>

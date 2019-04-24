@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author zmy
  */
 //@Controller用于标注控制层组件
-//处理请求地址映射，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径
+//RequestMapping处理请求地址映射，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径
 
 @RequestMapping("/product")
 @Controller

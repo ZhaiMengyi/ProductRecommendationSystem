@@ -12,17 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
-
     @Override
     public Integer registerUser(User user) {
         return userMapper.registerUser(user);
     }
-
     @Override
-    public Integer loginUser(String userName, String userPassword) {
+    public User loginUser(String userName, String userPassword) {
         return userMapper.loginUser(userName, userPassword);
     }
-
     @Override
     public User inquireUserInfoById(Integer userId) {
         return userMapper.inquireUserInfoById(userId);

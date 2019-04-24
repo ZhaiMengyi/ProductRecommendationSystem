@@ -1,12 +1,12 @@
 package com.zmy.entity;
 
 public class User {
+
     private Integer userId;
     private String userName;
     private String userPassword;
     private String userMobile;
     private String userAddress;
-    private Integer userStatus;
 
     public User() {
     }
@@ -66,14 +66,6 @@ public class User {
         this.userAddress = userAddress;
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -82,7 +74,6 @@ public class User {
                 ", userPassword='" + userPassword + '\'' +
                 ", userMobile='" + userMobile + '\'' +
                 ", userAddress='" + userAddress + '\'' +
-                ", userStatus=" + userStatus +
                 '}';
     }
 }

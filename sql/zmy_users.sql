@@ -1,16 +1,25 @@
-create table users
+create table user_orders
 (
-  user_id       int auto_increment
+  ord_id      int auto_increment
     primary key,
-  user_name     varchar(20)   not null,
-  user_password varchar(20)   not null,
-  user_mobile   varchar(20)   not null,
-  user_address  varchar(50)   null,
-  user_status   int default 0 null,
-  constraint users_user_name_uindex
-    unique (user_name)
+  user_id     int           not null,
+  pro_id      int           not null,
+  ord_time    varchar(50)   not null,
+  ord_address varchar(50)   not null,
+  ord_status  int default 0 null,
+  constraint user_orders_ibfk_1
+    foreign key (user_id) references users (user_id),
+  constraint user_orders_ibfk_2
+    foreign key (pro_id) references products (pro_id)
 );
 
-INSERT INTO zmy.users (user_id, user_name, user_password, user_mobile, user_address, user_status) VALUES (1, 'testModify', 'asd123', '15933333333', '四川省成都市', 0);
-INSERT INTO zmy.users (user_id, user_name, user_password, user_mobile, user_address, user_status) VALUES (2, 'cr', '123456', '12345678999', 'chengdu', 0);
-INSERT INTO zmy.users (user_id, user_name, user_password, user_mobile, user_address, user_status) VALUES (5, 'asdasd', 'asd123', '15988888888', '四川省成都市', 1);
+create index pro_id
+  on user_orders (pro_id);
+
+create index user_id
+  on user_orders (user_id);
+
+INSERT INTO zmy.user_orders (ord_id, user_id, pro_id, ord_time, ord_address, ord_status) VALUES (1, 1, 1, '2019-03-10-17-24-48', 'chengdu', -1);
+INSERT INTO zmy.user_orders (ord_id, user_id, pro_id, ord_time, ord_address, ord_status) VALUES (2, 1, 2, '2019-03-10-17-25-09', 'shangdong', 1);
+INSERT INTO zmy.user_orders (ord_id, user_id, pro_id, ord_time, ord_address, ord_status) VALUES (3, 1, 2, '2019-03-27-11-33-49', '四川省成都市高新西区百叶路一号', 0);
+INSERT INTO zmy.user_orders (ord_id, user_id, pro_id, ord_time, ord_address, ord_status) VALUES (4, 1, 2, '2019-03-27-11-41-00', '四川省成都市高新西区百叶路一号', 0);

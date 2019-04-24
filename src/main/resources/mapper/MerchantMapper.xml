@@ -46,10 +46,8 @@
     </update>
     <!--注销-->
     <delete id="deleteMerchant" parameterType="integer">
-        update
+        delete from
           merchants
-        set
-          mer_status = 1
         where
           mer_id = #{merId}
     </delete>
