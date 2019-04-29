@@ -1,10 +1,13 @@
 package com.zmy.controller;
 
-import com.zmy.dto.CartDTO;
 import com.zmy.dto.Message;
+import com.zmy.entity.Product;
 import com.zmy.entity.ShoppingCart;
+import com.zmy.entity.User;
+import com.zmy.entity.UserScore;
+import com.zmy.service.ProductService;
 import com.zmy.service.ShoppingCartService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zmy.service.UserScoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +25,12 @@ public class ShoppingCartController {
     private ShoppingCartService shoppingCartService;
 
     @Resource
+    private ProductService productService;
+
+    @Resource
+    private UserScoreService userScoreService;
+
+    @Resource
     private HttpServletRequest request;
     /**
      * 添加商品到购物车
@@ -34,22 +43,34 @@ public class ShoppingCartController {
     @ResponseBody
     public Message addProToCarts(@RequestParam(value = "proId") Integer proId,
                                  @RequestParam(value = "proNum") Integer proNum) {
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        if (userId != null && userId != 0){
-            Integer result = shoppingCartService.addProToCarts(new ShoppingCart(userId, proId, proNum));
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            Product product = productService.inquireProductById(proId);
+            ShoppingCart cart = new ShoppingCart();
+            cart.setProduct(product);
+            cart.setUserId(user.getUserId());
+            cart.setProNum(proNum);
+            Integer result = shoppingCartService.addProToCarts(cart);
             if (result > 0) {
+                UserScore userScore = new UserScore();
+                userScore.setUserId(user.getUserId());
+                userScore.setProId(proId);
+                userScore.setScore(6.0);
+                userScoreService.addScore(userScore);
                 return Message.success("添加成功");
+            } else {
+                Message.error("添加失败");
             }
         }
-        return Message.error("添加失败");
+        return Message.error("请登录");
     }
 
     @RequestMapping(value = "queryCart")
     @ResponseBody
     public Message listAllCarts() {
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        if (userId != null && userId != 0) {
-            List<CartDTO> carts = shoppingCartService.queryCart(userId);
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            List<ShoppingCart> carts = shoppingCartService.queryCart(user.getUserId());
             if (carts != null && carts.size() > 0){
                 return Message.success("查询成功").addObject("carts", carts);
             }

@@ -1,34 +1,20 @@
 package com.zmy.entity;
 
 /**
+ *
  * 实体类
  * entity层 = model层
  * 用于存放我们的实体类，与数据库中的属性值基本保持一致，实现set和get的方法
  */
+
 public class Product {
     private Integer proId;
     private String proName;
     private Double proPrice;
     private Integer proInventory;
+    private String proImg;
+    private Integer proBought;
     private Integer merId;
-
-    public Product() {
-    }
-
-    public Product(Integer proId, String proName, Double proPrice, Integer proInventory, Integer merId) {
-        this.proId = proId;
-        this.proName = proName;
-        this.proPrice = proPrice;
-        this.proInventory = proInventory;
-        this.merId = merId;
-    }
-
-    public Product(String proName, Double proPrice, Integer proInventory, Integer merId) {
-        this.proName = proName;
-        this.proPrice = proPrice;
-        this.proInventory = proInventory;
-        this.merId = merId;
-    }
 
     public Integer getProId() {
         return proId;
@@ -62,6 +48,22 @@ public class Product {
         this.proInventory = proInventory;
     }
 
+    public String getProImg() {
+        return proImg;
+    }
+
+    public void setProImg(String proImg) {
+        this.proImg = proImg;
+    }
+
+    public Integer getProBought() {
+        return proBought;
+    }
+
+    public void setProBought(Integer proBought) {
+        this.proBought = proBought;
+    }
+
     public Integer getMerId() {
         return merId;
     }
@@ -77,6 +79,8 @@ public class Product {
                 ", proName='" + proName + '\'' +
                 ", proPrice=" + proPrice +
                 ", proInventory=" + proInventory +
+                ", proImg='" + proImg + '\'' +
+                ", proBought=" + proBought +
                 ", merId=" + merId +
                 '}';
     }

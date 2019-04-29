@@ -3,29 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-  <link rel="stylesheet" type="text/css" href="assets/libs/layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../assets/libs/layui/css/layui.css">
+  <script type="text/javascript" src="../assets/libs/jquery/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/comment.js" type="text/javascript"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
 <body id="list-cont">
-  <div class="site-nav-bg">
-    <div class="site-nav w1200">
-      <p class="sn-back-home">
-        <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首页</a>
-      </p>
-      <div class="sn-quick-menu">
-        <div class="login"><a href="views/login.html">登录</a></div>
+<div class="site-nav-bg">
+  <div class="site-nav w1200">
+    <p class="sn-back-home">
+      <i class="layui-icon layui-icon-home"></i>
+      <a href="show.html">首页</a>
+    </p>
+    <div class="sn-quick-menu">
+      <div class="login">
+        <a href="javascript:myInfo();"><i class="layui-icon">&#xe770;</i>个人信息</a>
+      </div>
+      <div class="login">
+        <a href="javascript:updateInfo();"><i class="layui-icon">&#xe631;</i>修改信息</a>
+      </div>
+      <div class="login">
+        <a href="shopcart.html"><i class="layui-icon">&#xe657;</i>购物车</a>
+      </div>
+      <div class="login">
+        <a href="javascript:loginOut();"><i class="layui-icon">&#xe66d;</i>退出登录</a>
+      </div>
+      <div class="login">
+        <a href="javascript:deleteUser();"><i class="layui-icon">&#xe640;</i>注销用户</a>
       </div>
     </div>
   </div>
+</div>
   <div class="header">
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="#" title="Frog Mall">
-            <img src="img/logo.png">
+            <img src="../img/logo.png">
           </a>
         </h1>
         <div class="mallSearch">
@@ -47,7 +63,7 @@
       <div class="inner-cont0">
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
-            <a href="views/commodity.html" class="active">所有商品</a>
+            <a href="commodity.html" class="active">所有商品</a>
           </div>
         </div>
       </div>
@@ -106,7 +122,7 @@
       </div>
       <div class="category-banner">
         <div class="w1200">
-          <img src="img/banner1.jpg">
+          <img src="../img/banner1.jpg">
         </div>
       </div>
     </div>
@@ -116,7 +132,7 @@
         <div class="sk_inner w1200">
           <div class="sk_hd">
             <a href="javascript:;">
-              <img src="img/s_img1.jpg">
+              <img src="../img/s_img1.jpg">
             </a>
           </div>
           <div class="sk_bd">
@@ -124,7 +140,7 @@
               <div carousel-item>
                 <div class="item-box">
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img2.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img2.png"></a>
                     <div class="title">施华洛世奇</div>
                     <div class="price">
                       <span>￥1599.00</span>
@@ -132,7 +148,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img3.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img3.png"></a>
                     <div class="title">三只松鼠 碧根果</div>
                     <div class="price">
                       <span>￥49.00</span>
@@ -140,7 +156,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img4.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img4.png"></a>
                     <div class="title">优雅女鞋</div>
                     <div class="price">
                       <span>￥158.00</span>
@@ -148,7 +164,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img5.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img5.png"></a>
                     <div class="title">新鲜脐橙</div>
                     <div class="price">
                       <span>￥19.00</span>
@@ -158,7 +174,7 @@
                 </div>
                 <div class="item-box">
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img6.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img6.png"></a>
                     <div class="title">好看的大衣</div>
                     <div class="price">
                       <span>￥449.00</span>
@@ -166,7 +182,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img7.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img7.png"></a>
                     <div class="title">优质皮包</div>
                     <div class="price">
                       <span>￥249.00</span>
@@ -174,7 +190,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img8.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img8.png"></a>
                     <div class="title">好吃的牛肉</div>
                     <div class="price">
                       <span>￥69.00</span>
@@ -182,7 +198,7 @@
                     </div>
                   </div>
                   <div class="item">
-                    <a href="javascript:;"><img src="img/s_img9.png"></a>
+                    <a href="javascript:;"><img src="../img/s_img9.png"></a>
                     <div class="title">绿色的水杯</div>
                     <div class="price">
                       <span>￥19.00</span>
@@ -200,32 +216,7 @@
     <div class="product-list-box" id="product-list-box">
       <div class="product-list-cont w1200">
         <h4>更多推荐</h4>
-        <div class="product-item-box layui-clear">
-          <div class="list-item">
-            <a href="javascript:;"><img src="img/more1.png"></a>
-            <p>Chanel黑管丝绒口红</p>
-            <span>￥238.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="img/more2.png"></a>
-            <p>兰蔻 秋冬哑光红管黑管口红</p>
-            <span>￥258.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="img/more3.png"></a>
-            <p>TF圣诞限量Boys小黑管礼盒</p>
-            <span>￥888.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="img/more4.png"></a>
-            <p>LANCOME秋冬限量迷雾红管唇膏</p>
-            <span>￥275.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="img/more5.png"></a>
-            <p>DIOR迪奥限量红管口红</p>
-            <span>￥228.00</span>
-          </div>
+        <div class="product-item-box layui-clear" id="recommendation">
         </div>
       </div>
     </div>
@@ -255,24 +246,61 @@
     </div>
   </div>
 
-
-
-  <script type="text/javascript" src="assets/libs/layui/layui.js"></script>
-  <script type="text/javascript">
-layui.config({
-    base: 'assets/js/' //你存放新模块的目录，注意，不是layui的模块目录
+<script type="text/javascript" src="../assets/libs/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
+<script type="text/javascript">
+  layui.config({
+    base: '../assets/js/' //你存放新模块的目录，注意，不是layui的模块目录
   }).use(['mm','carousel'],function(){
-      var carousel = layui.carousel,
-     mm = layui.mm;
-     var option = {
-        elem: '#test1'
-        ,width: '100%' //设置容器宽度
-        ,arrow: 'always'
-        ,height:'298' 
-        ,indicator:'none'
+    var carousel = layui.carousel,
+            mm = layui.mm;
+    var option = {
+      elem: '#test1'
+      , width: '100%' //设置容器宽度
+      , arrow: 'always'
+      , height: '298'
+      , indicator: 'none'
+    };
+    carousel.render(option);
+
+
+    getRecommended();
+
+  });
+
+  function getRecommended() {
+    $.ajax({
+      url: '../product/getRecommended',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        showRecommended(data.extend.recommended)
       }
-      carousel.render(option);
-});
+    })
+  }
+
+
+  function showRecommended(products) {
+    $(products).each(function () {
+      var box = $("#recommendation");
+      $("<div></div>")
+              .addClass("list-item")
+              .append($("<a></a>")
+                      .attr("href", "details.html?proId=" + this.proId)
+                      .append($("<img/>")
+                              .attr("style", "width: 160px; height: 160px")
+                              .attr("src", this.proImg)
+                      )
+              )
+              .append($("<p></p>")
+                      .text(this.proName)
+              )
+              .append($("<span></span>")
+                      .text("￥" + this.proPrice)
+              ).appendTo(box);
+    })
+  }
   </script>
 </body>
 </html>

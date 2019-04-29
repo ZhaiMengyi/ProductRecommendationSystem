@@ -7,24 +7,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service("userOrderService")
 @Transactional(rollbackFor = Exception.class)
 public class UserOrderServiceImpl implements UserOrderService {
-    @Autowired
-    private UserOrderMapper orderMapper;
+
+    @Resource
+    private UserOrderMapper userOrderMapper;
 
     @Override
     public Integer payOrder(Integer ordId) {
-        return orderMapper.payOrder(ordId);
+        return userOrderMapper.payOrder(ordId);
     }
 
     @Override
     public Integer createOrder(UserOrder userOrder) {
-        return orderMapper.createOrder(userOrder);
+        return userOrderMapper.createOrder(userOrder);
+    }
+
+    @Override
+    public Integer createOrderBatch(List<UserOrder> orders) {
+        return userOrderMapper.createOrderBatch(orders);
     }
 
     @Override
     public Integer cancelOrder(Integer ordId) {
-        return orderMapper.cancelOrder(ordId);
+        return userOrderMapper.cancelOrder(ordId);
     }
 }

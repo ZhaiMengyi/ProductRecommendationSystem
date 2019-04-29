@@ -4,24 +4,8 @@ package com.zmy.entity;
 public class ShoppingCart {
     private Integer cartId;
     private Integer userId;
-    private Integer proId;
+    private Product product;
     private Integer proNum;
-
-    public ShoppingCart() {
-    }
-
-    public ShoppingCart(Integer cartId, Integer userId, Integer proId, Integer proNum) {
-        this.cartId = cartId;
-        this.userId = userId;
-        this.proId = proId;
-        this.proNum = proNum;
-    }
-
-    public ShoppingCart(Integer userId, Integer proId, Integer proNum) {
-        this.userId = userId;
-        this.proId = proId;
-        this.proNum = proNum;
-    }
 
     public Integer getCartId() {
         return cartId;
@@ -39,12 +23,12 @@ public class ShoppingCart {
         this.userId = userId;
     }
 
-    public Integer getProId() {
-        return proId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProId(Integer proId) {
-        this.proId = proId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Integer getProNum() {
@@ -60,7 +44,7 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "cartId=" + cartId +
                 ", userId=" + userId +
-                ", proId=" + proId +
+                ", product=" + product +
                 ", proNum=" + proNum +
                 '}';
     }

@@ -1,17 +1,27 @@
 package com.zmy.entity;
 
-public class ProductScore {
+/**
+ * 用户评分实体类
+ *
+ * @author Chen Rui
+ * @date 2019-04-28 10:07
+ **/
+public class UserScore {
+
+    private Integer scoreId;
+
     private Integer userId;
+
     private Integer proId;
+
     private Double score;
 
-    public ProductScore() {
+    public Integer getScoreId() {
+        return scoreId;
     }
 
-    public ProductScore(Integer userId, Integer proId, Double score) {
-        this.userId = userId;
-        this.proId = proId;
-        this.score = score;
+    public void setScoreId(Integer scoreId) {
+        this.scoreId = scoreId;
     }
 
     public Integer getUserId() {
@@ -40,8 +50,9 @@ public class ProductScore {
 
     @Override
     public String toString() {
-        return "ProductScore{" +
-                "userId=" + userId +
+        return "UserScore{" +
+                "scoreId=" + scoreId +
+                ", userId=" + userId +
                 ", proId=" + proId +
                 ", score=" + score +
                 '}';

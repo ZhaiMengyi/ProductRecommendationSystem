@@ -10,11 +10,16 @@ import java.util.List;
 
 @Mapper
 public interface ShoppingCartMapper {
-    Integer addProToCarts(@Param(value = "shoppingCart") ShoppingCart shoppingCart);
 
+    ShoppingCart getCartById(Integer cartId);
+
+    Integer addProToCarts(@Param(value = "shoppingCart") ShoppingCart shoppingCart);
+    
+    Integer deleteCartBatch(List<Integer> cartIds);
+    
     Integer deleteProFromCarts(Integer cartId);
 
-    List<CartDTO> queryCart(Integer userId);
+    List<ShoppingCart> queryCart(Integer userId);
 
     Integer modifyProNum(@Param(value = "cartId") Integer cartId, @Param(value = "proNum") Integer proNum);
 }

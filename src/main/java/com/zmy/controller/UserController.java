@@ -35,6 +35,7 @@ public class UserController {
                                 @RequestParam(value = "userMobile") String userMobile,
                                 @RequestParam(value = "userAddress") String userAddress) {
         Integer integer =userService.registerUser(new User(userName, userPassword, userMobile, userAddress));
+
         if (integer>0){
             return Message.success("注册成功");
         }
@@ -55,6 +56,7 @@ public class UserController {
         if (user != null){
             System.out.println(user);
             request.getSession().setAttribute("user", user);
+            user.setUserPassword(null);
             return Message.success("登录成功").addObject("user", user);
         }
         return Message.error("账号或密码错误");

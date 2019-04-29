@@ -2,7 +2,10 @@ package com.zmy.controller;
 
 import com.zmy.dto.Message;
 import com.zmy.entity.Product;
+import com.zmy.entity.User;
+import com.zmy.entity.UserScore;
 import com.zmy.service.ProductService;
+import com.zmy.service.UserScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 控制层
@@ -33,6 +37,9 @@ public class ProductController {
     @Resource
     private ProductService productService;
 
+    @Resource
+    private UserScoreService userScoreService;
+
     /**
      * 查询商品信息
      *
@@ -46,9 +53,34 @@ public class ProductController {
     @RequestMapping(value = "inquireProductById", method = RequestMethod.GET)
     @ResponseBody
     public Message inquireProductById(@RequestParam(value = "proId") Integer proId) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null){
+            UserScore userScore = new UserScore();
+            userScore.setUserId(user.getUserId());
+            userScore.setProId(proId);
+            userScore.setScore(2.0);
+            userScoreService.addScore(userScore);
+        }
+
         return Message.success().addObject("product", productService.inquireProductById(proId));
     }
 
+    @RequestMapping(value = "allProduct", method = RequestMethod.GET)
+    @ResponseBody
+    public Message getAllProducts() {
+
+        List<Product> allProduct = productService.getAllProduct();
+
+        return Message.success().addObject("allProduct", allProduct);
+    }
+
+    @RequestMapping("getRecommended")
+    @ResponseBody
+    public Message getRecommended(){
+        User user = (User) request.getSession().getAttribute("user");
+        List<Product> recommended = productService.getRecommended(user.getUserId());
+        return Message.success().addObject("recommended", recommended);
+    }
     /**
      * 添加商品
      *
@@ -64,7 +96,12 @@ public class ProductController {
                               @RequestParam(value = "proPrice") Double proPrice,
                               @RequestParam(value = "proInventory") Integer proInventory,
                               @RequestParam(value = "merId") Integer merId) {
-        Integer res = productService.addProduct(new Product(proName, proPrice, proInventory, merId));
+        Product product = new Product();
+        product.setProName(proName);
+        product.setProPrice(proPrice);
+        product.setProInventory(proInventory);
+        product.setMerId(merId);
+        Integer res = productService.addProduct(product);
         if (res > 0){
             return Message.success("添加成功");
         }
@@ -87,7 +124,13 @@ public class ProductController {
                                   @RequestParam(value = "proInventory") Integer proInventory) {
 
         Integer merId = (Integer) request.getSession().getAttribute("merId");
-        Integer res = productService.modifyProInfo(new Product(proId, proName, proPrice, proInventory, merId));
+        Product product = new Product();
+        product.setProId(proId);
+        product.setProName(proName);
+        product.setProPrice(proPrice);
+        product.setProInventory(proInventory);
+        product.setMerId(merId);
+        Integer res = productService.modifyProInfo(product);
         if (res > 0){
             return Message.success("修改成功");
         }

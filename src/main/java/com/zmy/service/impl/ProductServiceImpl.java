@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * impl实现类
  * 把mapper和service进行整合的文件
@@ -29,6 +31,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product inquireProductById(Integer proId) {
         return productMapper.inquireProductById(proId);
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        return productMapper.getAllProduct();
+    }
+
+    @Override
+    public List<Product> getRecommended(Integer userId) {
+        return productMapper.getRecommended(userId);
     }
 
     @Override
