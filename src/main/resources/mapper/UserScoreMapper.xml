@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmy.mapper.UserScoreMapper">
+
+    <insert id="addScore" parameterType="com.zmy.entity.UserScore">
+        INSERT INTO user_score(user_id, pro_id, score)
+        VALUES (#{userScore.userId}, #{userScore.proId}, #{userScore.score})
+    </insert>
+
+    <insert id="addScoreBatch" parameterType="list">
+        INSERT INTO user_score(user_id, pro_id, score) VALUES
+        <foreach collection="list" item="userScore" separator=",">
+            (#{userScore.userId}, #{userScore.proId}, #{userScore.score})
+        </foreach>
+    </insert>
+
+    <update id="updateScore" parameterType="com.zmy.entity.UserScore">
+        UPDATE user_score
+        SET score = #{userScore.score}
+        WHERE user_id = #{userScore.userId}
+          AND pro_id = #{userScore.proId}
+    </update>
+    <select id="getUserScore" resultType="com.zmy.entity.UserScore">
+        SELECT user_id, pro_id, score
+        FROM user_score
+        WHERE user_id = #{userScore.userId}
+          AND pro_id = #{userScore.proId}
+    </select>
+
+</mapper>

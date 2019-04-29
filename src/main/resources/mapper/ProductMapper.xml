@@ -6,6 +6,8 @@
         <result column="pro_name" jdbcType="VARCHAR" property="proName"/>
         <result column="pro_price" jdbcType="DOUBLE" property="proPrice"/>
         <result column="pro_inventory" jdbcType="INTEGER" property="proInventory"/>
+        <result column="pro_img" jdbcType="VARCHAR" property="proImg"/>
+        <result column="pro_bought" jdbcType="INTEGER" property="proBought"/>
         <result column="mer_id" jdbcType="INTEGER" property="merId"/>
     </resultMap>
     <select id="inquireProductById" resultMap="ProduceResultMap">
@@ -13,6 +15,14 @@
         products
         where
         pro_id = #{proId}
+    </select>
+
+    <select id="getAllProduct" resultType="com.zmy.entity.Product">
+        SELECT * FROM products
+    </select>
+
+    <select id="getRecommended" resultType="com.zmy.entity.Product">
+        SELECT * FROM products where pro_id in (select pro_id from user_product where user_id = #{userId})
     </select>
 
     <!--添加-->

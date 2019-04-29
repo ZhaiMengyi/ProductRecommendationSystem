@@ -2,6 +2,8 @@ package com.zmy.service;
 
 import com.zmy.entity.Product;
 
+import java.util.List;
+
 
 /**
  * 业务接口
@@ -26,6 +28,18 @@ public interface ProductService {
      */
     Product inquireProductById(Integer proId);
 
+    /**
+     * 获取全部商品
+     * @return
+     */
+    List<Product> getAllProduct();
+
+    /**
+     * 获取推荐商品
+     * @param userId
+     * @return
+     */
+    List<Product> getRecommended(Integer userId);
     /**
      * 修改商品信息
      *

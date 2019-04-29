@@ -3,6 +3,8 @@ package com.zmy.service;
 
 import com.zmy.entity.UserOrder;
 
+import java.util.List;
+
 
 public interface UserOrderService {
     /**
@@ -16,6 +18,14 @@ public interface UserOrderService {
      * @return
      */
     Integer createOrder(UserOrder userOrder);
+
+    /**
+     * 批量创建订单
+     * @param orders
+     * @return
+     */
+    Integer createOrderBatch(List<UserOrder> orders);
+
     /**
      * 取消订单
      * @param ordId

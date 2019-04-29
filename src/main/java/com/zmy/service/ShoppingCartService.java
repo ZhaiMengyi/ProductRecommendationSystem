@@ -7,12 +7,22 @@ import com.zmy.entity.ShoppingCart;
 import java.util.List;
 
 public interface ShoppingCartService {
+
+    ShoppingCart getCartById(Integer cartId);
     /**
      * 添加商品到购物车
      * @param shoppingCart 购物车信息
      * @return 影响行数
      */
     Integer addProToCarts(ShoppingCart shoppingCart);
+
+    /**
+     * 批量删除购物车
+     * @param cartIds
+     * @return
+     */
+    Integer deleteCartBatch(List<Integer> cartIds);
+
     /**
      * 从购物车删除商品
      * @param cartId 需要删除的购物车信息的Id号
@@ -24,7 +34,7 @@ public interface ShoppingCartService {
      * @param userId
      * @return
      */
-    List<CartDTO> queryCart(Integer userId);
+    List<ShoppingCart> queryCart(Integer userId);
     /**
      * 修改购物车商品数量
      * @param cartId

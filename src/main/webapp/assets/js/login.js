@@ -1,13 +1,13 @@
 layui.use(['form'], function () {
     var form = layui.form;
-    checkLogin();
+    // checkLogin();
     form.on('submit(User-login-submit)', function (obj) {
         layer.load(1);
-        $.post("../user/loginUser", obj.field, function (data) {
+        $.post("user/loginUser", obj.field, function (data) {
             if (data.code == 666) {
                 layer.msg(data.msg, {icon: 1});
-                localStorage.setItem("user", JSON.stringify(data));
-                location.replace("../views/commodity.html");
+                sessionStorage.setItem("user", JSON.stringify(data));
+                location.replace("views/show.html");
             } else {
                 layer.closeAll('loading');
                 layer.msg(data.msg, {icon: 2});
@@ -16,12 +16,13 @@ layui.use(['form'], function () {
         return false;
     });
 });
-//检查是否登录
+
+// 检查是否登录
 function checkLogin() {
-    var tempUser = JSON.parse(localStorage.getItem("user"));
+    var tempUser = JSON.parse(sessionStorage.getItem("user"));
     console.log(tempUser);
     if (tempUser != null) {
-        location.replace("../views/commodity.html");
+        location.replace("views/commodity.html");
     }
 }
 

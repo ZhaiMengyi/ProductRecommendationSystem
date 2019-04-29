@@ -1,3 +1,5 @@
+
+
 $(function () {
     //修改表单提交事件
     layui.form.on('submit(updateBtnSubmit)',function (data) {
@@ -14,57 +16,21 @@ $(function () {
 
         },"JSON");
         return false;
-    })
-});
-//修改个人信息
-function updateInfo() {
-    layer.open({
-        type:1,
-        title:"修改用户信息",
-        area:'400px',
-        offset:'120px',
-        content:$("#updateForm").html()
     });
-    $("#updateForm")[0].reset();
-    $("#updateBtnCancel").click(function () {
-        layer.closeAll('page');
-    })
-}
 
-//个人信息
-function myInfo() {
-    var user = getCurrentUser();
-    console.log(user);
-    var content = '<ul class="site-dir" style="padding: 25px 35px 8px 35px;">'
-        + '<li>用户名：'+user.extend.user.userName+'</li>'
-        + '<li>密码：'+user.extend.user.userPassword+'</li>';
-    content += '<li>手机号：'+user.extend.user.userMobile+'</li>'
-        + '<li>地址：'+user.extend.user.userAddress+'</li></ul>';
-    layer.open({
-        type:1,
-        title:'个人信息',
-        area:'350px',
-        offset:'120px',
-        content: content,
-        btn:['关闭'],
-        btnAlign:'c'
-    });
-}
-
-
-//退出登录
-function loginOut() {
-    layer.load(1);
     $.ajax({
-        url:"../user/logoutUser",
-        type:"delete",
-        dataType:"JSON",
-        success:function (data) {
-            localStorage.removeItem("user");
-            location.replace("../index.html");
+        url: "../product/allProduct",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            listProducts(data.extend.allProduct);
         }
     })
-}
+
+});
+
+
+
 
 //注销
 function deleteUser() {
@@ -80,7 +46,8 @@ function deleteUser() {
                 layer.closeAll('loading');
                 if (data.code == 666) {
                     layer.msg(data.msg, {icon: 1});
-                    location.replace("../index.html");
+                    console.log("delete")
+                    location.replace("../show.html");
                 } else {
                     layer.msg(data.msg, {icon: 2});
                 }
@@ -100,22 +67,22 @@ function listProducts(products) {
             .append($("<div></div>")
                 .addClass("img")
                 .append($("<a></a>")
-                    .attr("href", "#")
-                    .append($("<img>")
-                        .attr("src",this.productImg)
+                    .attr("href", "details.html?proId=" + this.proId)
+                    .append($("<img/>")
+                        .attr("src",this.proImg)
                         .attr("style", "width: 280px; height: 280px"))))
             .append($("<div></div>")
                 .addClass("text")
                 .append($("<p></p>")
                     .addClass("title")
-                    .text(this.productName))
+                    .text(this.proName))
                 .append($("<p></p>")
                     .addClass("price")
                     .append($("<span></span>")
                         .addClass("pri")
-                        .text(this.productPrice))
+                        .text("￥"+this.proPrice))
                     .append($("<span></span>")
                         .addClass("nub")
-                        .text(this.productBought))))
+                        .text(this.proBought + "付款")))).appendTo(list);
     })
 }

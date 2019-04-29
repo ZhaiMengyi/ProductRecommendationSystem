@@ -3,7 +3,8 @@ package com.zmy.mapper;
 import com.zmy.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 映射
@@ -16,6 +17,10 @@ public interface ProductMapper {
     Integer addProduct(@Param(value = "product") Product product);
 
     Product inquireProductById(Integer proId);
+
+    List<Product> getAllProduct();
+
+    List<Product> getRecommended(Integer userId);
 
     Integer modifyProInfo(@Param(value = "product") Product product);
 

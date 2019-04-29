@@ -8,25 +8,6 @@ public class UserOrder {
     private String ordTime;
     private String ordAddress;
 
-    public UserOrder() {
-    }
-
-    public UserOrder(Integer ordId, Integer userId, Integer proId, String ordTime, String ordAddress) {
-        this.ordId = ordId;
-        this.userId = userId;
-        this.proId = proId;
-        this.ordTime = ordTime;
-        this.ordAddress = ordAddress;
-    }
-
-    public UserOrder(Integer userId, Integer proId, String ordTime, String ordAddress) {
-        this.userId = userId;
-        this.proId = proId;
-        this.ordTime = ordTime;
-        this.ordAddress = ordAddress;
-    }
-
-
     public Integer getOrdId() {
         return ordId;
     }

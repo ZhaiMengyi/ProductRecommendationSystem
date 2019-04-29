@@ -1,20 +1,30 @@
 package com.zmy.service.impl;
 
-import com.zmy.dto.CartDTO;
 import com.zmy.entity.ShoppingCart;
 import com.zmy.mapper.ShoppingCartMapper;
 import com.zmy.service.ShoppingCartService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class ShoppingCartServiceImpl implements ShoppingCartService {
-    @Autowired
+
+    @Resource
     private ShoppingCartMapper shoppingCartMapper;
+
+    @Override
+    public ShoppingCart getCartById(Integer cartId) {
+        return shoppingCartMapper.getCartById(cartId);
+    }
+
+    @Override
+    public Integer deleteCartBatch(List<Integer> cartIds) {
+        return shoppingCartMapper.deleteCartBatch(cartIds);
+    }
 
     @Override
     public Integer addProToCarts(ShoppingCart shoppingCart) {
@@ -27,7 +37,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public List<CartDTO> queryCart(Integer userId) {
+    public List<ShoppingCart> queryCart(Integer userId) {
         return shoppingCartMapper.queryCart(userId);
     }
 
