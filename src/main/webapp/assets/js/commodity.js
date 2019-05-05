@@ -1,6 +1,8 @@
-
-
-$(function () {
+layui.use(['table', 'form', 'jquery', 'layer'], function () {
+    var table = layui.table,
+        form = layui.form,
+        layer = layui.layer,
+        $ = layui.jquery;
     //修改表单提交事件
     layui.form.on('submit(updateBtnSubmit)',function (data) {
         data.field._method = $("#updateForm").attr("method");
@@ -18,18 +20,55 @@ $(function () {
         return false;
     });
 
-    $.ajax({
-        url: "../product/allProduct",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            listProducts(data.extend.allProduct);
-        }
-    })
-
 });
 
+//修改个人信息
+function updateInfo() {
+    layer.open({
+        type:1,
+        title:"修改用户信息",
+        area:'400px',
+        offset:'120px',
+        content:$("#updateForm").html()
+    });
+    $("#updateForm")[0].reset();
+    $("#updateBtnCancel").click(function () {
+        layer.closeAll('page');
+    })
+}
 
+//个人信息
+function myInfo() {
+    var user = getCurrentUser();
+    console.log(user);
+    var content = '<ul class="site-dir" style="padding: 25px 35px 8px 35px;">'
+        + '<li>用户名：'+user.extend.user.userName+'</li>'
+    content += '<li>手机号：'+user.extend.user.userMobile+'</li>'
+        + '<li>地址：'+user.extend.user.userAddress+'</li></ul>';
+    layer.open({
+        type:1,
+        title:'个人信息',
+        area:'350px',
+        offset:'120px',
+        content: content,
+        btn:['关闭'],
+        btnAlign:'c'
+    });
+}
+
+
+//退出登录
+function loginOut() {
+    $.ajax({
+        url:"../user/logoutUser",
+        type:"delete",
+        dataType:"JSON",
+        success:function (data) {
+            localStorage.removeItem("user");
+            location.replace("../views/login.html");
+        }
+    })
+}
 
 
 //注销
@@ -54,35 +93,4 @@ function deleteUser() {
             }
         });
     });
-}
-
-
-
-
-function listProducts(products) {
-    $(products).each(function (index) {
-        var list = $("#list-cont");
-        $("<div></div>")
-            .addClass("item")
-            .append($("<div></div>")
-                .addClass("img")
-                .append($("<a></a>")
-                    .attr("href", "details.html?proId=" + this.proId)
-                    .append($("<img/>")
-                        .attr("src",this.proImg)
-                        .attr("style", "width: 280px; height: 280px"))))
-            .append($("<div></div>")
-                .addClass("text")
-                .append($("<p></p>")
-                    .addClass("title")
-                    .text(this.proName))
-                .append($("<p></p>")
-                    .addClass("price")
-                    .append($("<span></span>")
-                        .addClass("pri")
-                        .text("￥"+this.proPrice))
-                    .append($("<span></span>")
-                        .addClass("nub")
-                        .text(this.proBought + "付款")))).appendTo(list);
-    })
 }

@@ -8,18 +8,18 @@
         <result column="pro_num" property="proNum" jdbcType="INTEGER"/>
         <association column="pro_id" property="product" select="com.zmy.mapper.ProductMapper.inquireProductById"/>
     </resultMap>
-
+    <!--获取购物车-->
     <select id="getCartById" resultMap="BaseCartResult">
         select * from shopping_carts where cart_id = #{cartId}
     </select>
-
+    <!--添加商品到购物车-->
     <insert id="addProToCarts" parameterType="com.zmy.entity.ShoppingCart">
         insert into
         shopping_carts(user_id, pro_id, pro_num)
         values
         (#{shoppingCart.userId}, #{shoppingCart.product.proId}, #{shoppingCart.proNum})
     </insert>
-
+    <!--修改购物车商品数量-->
     <update id="modifyProNum">
         update
           shopping_carts
@@ -28,21 +28,21 @@
         where
           cart_id = #{cartId}
     </update>
-
+    <!--批量删除商品-->
     <delete id="deleteCartBatch" parameterType="list">
         delete from shopping_carts where cart_id in
         <foreach collection="list" item="cartId" open="(" close=")" separator=",">
             #{cartId}
         </foreach>
     </delete>
-    
+    <!--删除商品-->
     <delete id="deleteProFromCarts" parameterType="com.zmy.entity.ShoppingCart">
         delete from
         shopping_carts
         where
         cart_id = #{cartId}
     </delete>
-
+    <!--查询购物车内所有商品-->
     <select id="queryCart" resultMap="BaseCartResult">
         select
           *

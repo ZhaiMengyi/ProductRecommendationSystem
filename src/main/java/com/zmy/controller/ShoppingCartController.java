@@ -65,6 +65,10 @@ public class ShoppingCartController {
         return Message.error("请登录");
     }
 
+    /**
+     * 查询购物车内所有商品
+     * @return
+     */
     @RequestMapping(value = "queryCart")
     @ResponseBody
     public Message listAllCarts() {
@@ -102,6 +106,12 @@ public class ShoppingCartController {
         return Message.error("请重新登录");
     }
 
+    /**
+     * 修改购物车商品数量
+     * @param cartId
+     * @param proNum
+     * @return
+     */
     @RequestMapping(value = "modifyProNum")
     @ResponseBody
     public Message modifyProNum(@RequestParam(value = "cartId") Integer cartId,

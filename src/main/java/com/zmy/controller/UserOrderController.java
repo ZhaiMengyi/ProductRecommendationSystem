@@ -114,6 +114,11 @@ public class UserOrderController {
         return Message.error("请登录");
     }
 
+    /**
+     * 取消订单
+     * @param ordId
+     * @return
+     */
     @RequestMapping(value = "cancelOrder")
     @ResponseBody
     public Message cancelOrder(@RequestParam(value = "ordId") Integer ordId){

@@ -30,6 +30,7 @@ import java.util.List;
 public class ProductController {
     //属性加上@Autowired后不需要getter()和setter()方法，Spring也会自动注入。
     //@Autowired注释使得接口可以被容器注入
+    //@Resource 按照名称注入
 
     @Resource
     private HttpServletRequest request;
@@ -65,6 +66,10 @@ public class ProductController {
         return Message.success().addObject("product", productService.inquireProductById(proId));
     }
 
+    /**
+     * 获取所有商品
+     * @return
+     */
     @RequestMapping(value = "allProduct", method = RequestMethod.GET)
     @ResponseBody
     public Message getAllProducts() {
@@ -74,6 +79,10 @@ public class ProductController {
         return Message.success().addObject("allProduct", allProduct);
     }
 
+    /**
+     * 获取所有推荐商品
+     * @return
+     */
     @RequestMapping("getRecommended")
     @ResponseBody
     public Message getRecommended(){
@@ -138,6 +147,11 @@ public class ProductController {
 
     }
 
+    /**
+     * 删除商品
+     * @param proId
+     * @return
+     */
     @RequestMapping(value = "deleteProduct",method = RequestMethod.DELETE)
     @ResponseBody
     public Message deleteProduct(@RequestParam(value = "proId") Integer proId) {

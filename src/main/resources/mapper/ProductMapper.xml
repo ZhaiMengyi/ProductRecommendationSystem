@@ -16,11 +16,11 @@
         where
         pro_id = #{proId}
     </select>
-
+    <!--获取所有商品-->
     <select id="getAllProduct" resultType="com.zmy.entity.Product">
         SELECT * FROM products
     </select>
-
+    <!--获取推荐商品-->
     <select id="getRecommended" resultType="com.zmy.entity.Product">
         SELECT * FROM products where pro_id in (select pro_id from user_product where user_id = #{userId})
     </select>

@@ -20,8 +20,8 @@ layui.define(['layer'],function(exports){
             var SelectedPieces = document.getElementsByClassName('Selected-pieces')[0];//总件数
             var piecesTotal = document.getElementsByClassName('pieces-total')[0];//总价
             var batchdeletion = document.getElementsByClassName('batch-deletion')[0];//批量删除按钮
-            var payBtn = document.getElementById("pay");
-            //计算
+            var payBtn = document.getElementById("pay");//结算
+            //结算金额
             function getTotal(){
                 var seleted = 0,price = 0;
                 for(var i = 0; i < uls.length;i++){

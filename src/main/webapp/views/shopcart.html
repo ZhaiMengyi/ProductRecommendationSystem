@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="../assets/libs/layui/css/layui.css">
     <script src="../assets/libs/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../assets/js/comment.js" type="text/javascript"></script>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -19,21 +18,7 @@
             <a href="show.html">首页</a>
         </p>
         <div class="sn-quick-menu">
-            <div class="login">
-                <a href="javascript:myInfo();"><i class="layui-icon">&#xe770;</i>个人信息</a>
-            </div>
-            <div class="login">
-                <a href="javascript:updateInfo();"><i class="layui-icon">&#xe631;</i>修改信息</a>
-            </div>
-            <div class="login">
-                <a href="shopcart.html"><i class="layui-icon">&#xe657;</i>购物车</a>
-            </div>
-            <div class="login">
-                <a href="javascript:loginOut();"><i class="layui-icon">&#xe66d;</i>退出登录</a>
-            </div>
-            <div class="login">
-                <a href="javascript:deleteUser();"><i class="layui-icon">&#xe640;</i>注销用户</a>
-            </div>
+
         </div>
     </div>
 </div>
@@ -109,49 +94,6 @@
             <div class="order-content" id="list-cont">
             </div>
         </div>
-
-
-        <!-- 模版导入数据 -->
-        <!-- <script type="text/html" id="demo">
-          {{# layui.each(d.infoList,function(index,item){}}
-            <ul class="item-content layui-clear">
-              <li class="th th-chk">
-                <div class="select-all">
-                  <div class="cart-checkbox">
-                    <input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
-                  </div>
-                </div>
-              </li>
-              <li class="th th-item">
-                <div class="item-cont">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg" alt=""></a>
-                  <div class="text">
-                    <div class="title">宝宝T恤棉质小衫</div>
-                    <p><span>粉色</span>  <span>130</span>cm</p>
-                  </div>
-                </div>
-              </li>
-              <li class="th th-price">
-                <span class="th-su">189.00</span>
-              </li>
-              <li class="th th-amount">
-                <div class="box-btn layui-clear">
-                  <div class="less layui-btn">-</div>
-                  <input class="Quantity-input" type="" name="" value="1" disabled="disabled">
-                  <div class="add layui-btn">+</div>
-                </div>
-              </li>
-              <li class="th th-sum">
-                <span class="sum">189.00</span>
-              </li>
-              <li class="th th-op">
-                <span class="dele-btn">删除</span>
-              </li>
-            </ul>
-          {{# });}}
-        </script> -->
-
-
         <div class="FloatBarHolder layui-clear">
             <div class="th th-chk">
                 <div class="select-all">
@@ -165,7 +107,7 @@
                 <span class="batch-dele-btn">批量删除</span>
             </div>
             <div class="th Settlement">
-                <button class="layui-btn" id="pay">结算</button>
+                <button class="layui-btn" lay-submit id="pay">结算</button>
             </div>
             <div class="th total">
                 <p>应付：<span class="pieces-total">0</span></p>
@@ -173,12 +115,14 @@
         </div>
     </div>
 </div>
-
+</body>
 <script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="../assets/js/comment.js"></script>
+<!--<script type="text/javascript" src="../assets/js/commodity.js"></script>-->
 <script type="text/javascript">
     layui.config({
         base: '../assets/js/' //你存放新模块的目录，注意，不是layui的模块目录
     }).use(['mm', 'jquery', 'element', 'car']);
 </script>
-</body>
+
 </html>
