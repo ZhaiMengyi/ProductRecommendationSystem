@@ -65,7 +65,7 @@ function loginOut() {
         dataType:"JSON",
         success:function (data) {
             localStorage.removeItem("user");
-            location.replace("../views/login.html");
+            location.replace("../index.html");
         }
     })
 }

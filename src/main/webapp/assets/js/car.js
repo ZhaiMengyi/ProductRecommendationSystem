@@ -1,6 +1,5 @@
-
-layui.define(['layer'],function(exports){
-	var layer = layui.layer;
+layui.define(['layer'], function (exports) {
+    var layer = layui.layer;
     $.ajax({
         url: "../shoppingCarts/queryCart",
         type: "GET",
@@ -12,7 +11,7 @@ layui.define(['layer'],function(exports){
     });
 
     var car = {
-        init : function(){
+        init: function () {
 
             var uls = document.getElementById('list-cont').getElementsByTagName('ul');//每一行
             var checkInputs = document.getElementsByClassName('check'); // 所有勾选框
@@ -22,10 +21,10 @@ layui.define(['layer'],function(exports){
             var batchdeletion = document.getElementsByClassName('batch-deletion')[0];//批量删除按钮
             var payBtn = document.getElementById("pay");//结算
             //结算金额
-            function getTotal(){
-                var seleted = 0,price = 0;
-                for(var i = 0; i < uls.length;i++){
-                    if(uls[i].getElementsByTagName('input')[0].checked){
+            function getTotal() {
+                var seleted = 0, price = 0;
+                for (var i = 0; i < uls.length; i++) {
+                    if (uls[i].getElementsByTagName('input')[0].checked) {
                         seleted += parseInt(uls[i].getElementsByClassName('Quantity-input')[0].value);
                         price += parseFloat(uls[i].getElementsByClassName('sum')[0].innerHTML);
                     }
@@ -35,22 +34,22 @@ layui.define(['layer'],function(exports){
             }
 
             // 小计
-            function getSubTotal(ul){
+            function getSubTotal(ul) {
                 var unitprice = parseFloat(ul.getElementsByClassName('th-su')[0].innerHTML);
                 var count = parseInt(ul.getElementsByClassName('Quantity-input')[0].value);
                 var SubTotal = parseFloat(unitprice * count);
                 ul.getElementsByClassName('sum')[0].innerHTML = SubTotal.toFixed(2);
             }
 
-            for(var i = 0;i < checkInputs.length;i++){
-                checkInputs[i].onclick = function(){
-                    if(this.className === 'check-all check'){
-                        for(var j = 0;j < checkInputs.length; j++){
+            for (var i = 0; i < checkInputs.length; i++) {
+                checkInputs[i].onclick = function () {
+                    if (this.className === 'check-all check') {
+                        for (var j = 0; j < checkInputs.length; j++) {
                             checkInputs[j].checked = this.checked;
                         }
                     }
-                    if(this.checked === false){
-                        for(var k = 0;k < checkAll.length;k++){
+                    if (this.checked === false) {
+                        for (var k = 0; k < checkAll.length; k++) {
                             checkAll[k].checked = false;
                         }
                     }
@@ -58,8 +57,8 @@ layui.define(['layer'],function(exports){
                 }
             }
 
-            for(var i = 0; i < uls.length;i++){
-                uls[i].onclick = function(e){
+            for (var i = 0; i < uls.length; i++) {
+                uls[i].onclick = function (e) {
                     e = e || window.event;
                     var el = e.srcElement;
                     var cls = el.className;
@@ -67,13 +66,13 @@ layui.define(['layer'],function(exports){
                     var less = this.getElementsByClassName('less')[0];
                     var val = parseInt(input.value);
                     var that = this;
-                    switch(cls){
+                    switch (cls) {
                         case 'add layui-btn':
                             input.value = val + 1;
                             getSubTotal(this);
                             break;
                         case 'less layui-btn':
-                            if(val > 1){
+                            if (val > 1) {
                                 input.value = val - 1;
                             }
                             getSubTotal(this);
@@ -82,76 +81,107 @@ layui.define(['layer'],function(exports){
                             // layer.confirm('你确定要删除吗',{
                             //     yes:function(index,layero){
                             //         layer.close(index);
-                                    that.parentNode.removeChild(that);
+                            that.parentNode.removeChild(that);
                             //     }
                             // });
+                            var cartid = $(this).attr('cartid');
+                            $.ajax({
+                                url: "../shoppingCarts/deleteProFromCart",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    "cartId": cartid
+                                },
+                                success: function (data) {
+                                    if (data.code === 666) {
+                                        layer.msg("删除成功！", {icon: 1})
+                                    } else {
+                                        layer.msg("删除商品时发生异常！", {icon: 2})
+                                    }
+                                }
+                            });
                             break;
                     }
                     getTotal()
                 }
             }
-            batchdeletion.onclick = function(){
+            batchdeletion.onclick = function () {
 
-                if(SelectedPieces.innerHTML != 0){
+                if (SelectedPieces.innerHTML != 0) {
                     // layer.confirm('你确定要删除吗',{
-                        // yes:function(index,layero){
-                        //     layer.close(index);
-                            for(var i = 0;i < uls.length;i++){
-                                var input = uls[i].getElementsByTagName('input')[0];
-                                if(input.checked){
-                                    uls[i].parentNode.removeChild(uls[i]);
-                                    i--;
-                                }
+                    // yes:function(index,layero){
+                    //     layer.close(index);
+                    for (var i = 0; i < uls.length; i++) {
+                        var input = uls[i].getElementsByTagName('input')[0];
+                        if (input.checked) {
+                            uls[i].parentNode.removeChild(uls[i]);
+                            i--;
+                        }
+                    }
+                    $.ajax({
+                        url: "../userOrder/payCart",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "cartIds": cartIds
+                        },
+                        success: function (data) {
+                            if (data.code === 666) {
+                                layer.msg("购买成功！", {icon: 1})
+                            } else {
+                                layer.msg("创建订单发生异常！", {icon: 2})
                             }
-                            getTotal()
-                        // }
+                        }
+                    });
+                    getTotal()
+                    // }
 
                     // })
-                }else{
+                } else {
                     layer.msg('请选择商品')
                 }
 
             };
 
-            payBtn.onclick = function(){
+            payBtn.onclick = function () {
                 console.log(123);
-                if(SelectedPieces.innerHTML != 0){
+                if (SelectedPieces.innerHTML != 0) {
                     console.log(312);
                     console.log(uls.length);
                     // layer.confirm('确定结算吗',{
                     //     yes:function(index,layero){
                     //         layer.close(index);
-                            var cartIds = [];
-                            console.log(111);
-                            for(var i = 0;i < uls.length;i++){
-                                console.log(222);
-                                var input = uls[i].getElementsByTagName('input')[0];
-                                if(input.checked){
-                                    cartIds.push($(uls[i]).attr("cartId"));
-                                    uls[i].parentNode.removeChild(uls[i]);
-                                    i--;
-                                }
+                    var cartIds = [];
+                    console.log(111);
+                    for (var i = 0; i < uls.length; i++) {
+                        console.log(222);
+                        var input = uls[i].getElementsByTagName('input')[0];
+                        if (input.checked) {
+                            cartIds.push($(uls[i]).attr("cartId"));
+                            uls[i].parentNode.removeChild(uls[i]);
+                            i--;
+                        }
+                    }
+                    $.ajax({
+                        url: "../userOrder/payCart",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "cartIds": cartIds
+                        },
+                        success: function (data) {
+                            if (data.code === 666) {
+                                layer.msg("购买成功！", {icon: 1})
+                            } else {
+                                layer.msg("创建订单发生异常！", {icon: 2})
                             }
-                            $.ajax({
-                                url: "../userOrder/payCart",
-                                type: "POST",
-                                dataType: "json",
-                                data:{
-                                    "cartIds": cartIds
-                                },
-                                success: function (data) {
-                                    if (data.code === 666){
-                                        layer.msg("购买成功！", {icon: 1})
-                                    } else {
-                                        layer.msg("创建订单发生异常！", {icon: 2})
-                                    }
-                                }
-                            });
-                            getTotal();
+                        }
+                    });
+                    getTotal();
 
                     //     }
                     // })
-                }else{
+                } else {
                     layer.msg('请选择商品')
                 }
 
@@ -163,7 +193,7 @@ layui.define(['layer'],function(exports){
     };
 
 
-    exports('car',car)
+    exports('car', car)
 
 });
 

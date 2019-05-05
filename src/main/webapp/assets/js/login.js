@@ -10,7 +10,8 @@ layui.use(['form'], function () {
                 location.replace("../views/show.html");
             } else {
                 layer.closeAll('loading');
-                layer.msg(data.msg, {icon: 2});
+                layer.msg(data.msg, {
+                    icon: 2});
             }
         }, "json");
         return false;

@@ -28,6 +28,7 @@
         where
           cart_id = #{cartId}
     </update>
+
     <!--批量删除商品-->
     <delete id="deleteCartBatch" parameterType="list">
         delete from shopping_carts where cart_id in
@@ -35,6 +36,7 @@
             #{cartId}
         </foreach>
     </delete>
+
     <!--删除商品-->
     <delete id="deleteProFromCarts" parameterType="com.zmy.entity.ShoppingCart">
         delete from

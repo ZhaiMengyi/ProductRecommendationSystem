@@ -92,9 +92,9 @@ public class ShoppingCartController {
      */
     @RequestMapping(value = "deleteProFromCart")
     @ResponseBody
-    public Message deleteProFromCart(@RequestParam(value = "cartId") Integer cartId) {
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        if (userId != null && userId != 0) {
+    public Message deleteProFromCart(Integer cartId) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
             Integer result = shoppingCartService.deleteProFromCarts(cartId);
             if (result > 0) {
                 return Message.success("删除成功");
@@ -116,8 +116,8 @@ public class ShoppingCartController {
     @ResponseBody
     public Message modifyProNum(@RequestParam(value = "cartId") Integer cartId,
                                 @RequestParam(value = "proNum") Integer proNum){
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        if (userId != null && userId != 0) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
             Integer result = shoppingCartService.modifyProNum(cartId, proNum);
             if (result > 0) {
                 return Message.success("修改成功");
