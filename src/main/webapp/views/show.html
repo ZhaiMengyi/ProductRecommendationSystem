@@ -7,6 +7,15 @@
   <link rel="stylesheet" type="text/css" href="../assets/libs/layui/css/layui.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <style>
+    .model-form {
+      padding-top: 30px;
+      padding-right: 45px;
+    }
+    .model-form-footer {
+      text-align: right;
+    }
+  </style>
 </head>
 <body id="list-cont">
 <div class="site-nav-bg">
@@ -154,10 +163,46 @@
     </div>
   </div>
 </body>
+<!-- 修改信息弹窗 -->
+<script type="text/html" id="pswModel">
+  <form id="updateForm" class="layui-form model-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label">用户名</label>
+      <div class="layui-input-block">
+        <input name="userName" placeholder="请输入用户名" type="text" class="layui-input" maxlength="20"
+               lay-verify="required" required/>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">密码</label>
+      <div class="layui-input-block">
+        <input name="userPassword" placeholder="请输入密码" type="text" class="layui-input" maxlength="20"
+               lay-verify="required" required/>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">手机号</label>
+      <div class="layui-input-block">
+        <input name="userMobile" placeholder="请输入手机号" type="text" class="layui-input" maxlength="20"
+               lay-verify="required" required/>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">地址</label>
+      <div class="layui-input-block">
+        <input name="userAddress" placeholder="请输入地址" type="text" class="layui-input" maxlength="20"
+               lay-verify="required" required/>
+      </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+      <button class="layui-btn layui-btn-primary" type="button" id="updateBtnCancel">取消</button>
+      <button class="layui-btn" lay-filter="updateBtnSubmit" lay-submit data-type="reload">保存</button>
+    </div>
+  </form>
+</script>
 <script type="text/javascript" src="../assets/libs/jquery/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="../assets/js/show.js"></script>
 <script type="text/javascript" src="../assets/js/comment.js"></script>
 <script type="text/javascript" src="../assets/js/commodity.js"></script>
-
 </html>

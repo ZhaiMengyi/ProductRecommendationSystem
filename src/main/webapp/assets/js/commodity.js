@@ -20,27 +20,36 @@ layui.use(['table', 'form', 'jquery', 'layer'], function () {
         return false;
     });
 
+
 });
 
 //修改个人信息
 function updateInfo() {
+    var user = getCurrentUser();
     layer.open({
         type:1,
         title:"修改用户信息",
         area:'400px',
         offset:'120px',
-        content:$("#updateForm").html()
+        content: $("#pswModel").html()
     });
     $("#updateForm")[0].reset();
+    $("#updateForm").attr("method", "POST");
+    if (user != null){
+        $("#updateForm input[name=userName]").val(user.extend.user.userName);
+        $("#updateForm input[name=userPassword]").val(user.extend.user.userPassword);
+        $("#updateForm input[name=userMobile]").val(user.extend.user.userMobile);
+        $("#updateForm input[name=userAddress]").val(user.extend.user.userAddress);
+        $("#updateForm").attr("method", "PUT");
+    }
     $("#updateBtnCancel").click(function () {
         layer.closeAll('page');
-    })
+    });
 }
 
 //个人信息
 function myInfo() {
     var user = getCurrentUser();
-    console.log(user);
     var content = '<ul class="site-dir" style="padding: 25px 35px 8px 35px;">'
         + '<li>用户名：'+user.extend.user.userName+'</li>'
     content += '<li>手机号：'+user.extend.user.userMobile+'</li>'
@@ -64,8 +73,8 @@ function loginOut() {
         type:"delete",
         dataType:"JSON",
         success:function (data) {
-            localStorage.removeItem("user");
-            location.replace("../index.html");
+            sessionStorage.removeItem("user");
+            location.replace("../views/login.html");
         }
     })
 }
@@ -74,6 +83,7 @@ function loginOut() {
 //注销
 function deleteUser() {
     var user = getCurrentUser();
+    console.log(user.extend.user.userId);
     layer.confirm('确定要注销吗？', function (index) {
         layer.close(index);
         layer.load(1);
@@ -86,7 +96,7 @@ function deleteUser() {
                 if (data.code == 666) {
                     layer.msg(data.msg, {icon: 1});
                     console.log("delete")
-                    location.replace("../show.html");
+                    location.replace("../index.html");
                 } else {
                     layer.msg(data.msg, {icon: 2});
                 }

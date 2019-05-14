@@ -111,15 +111,17 @@ layui.define(['layer'], function (exports) {
                     // layer.confirm('你确定要删除吗',{
                     // yes:function(index,layero){
                     //     layer.close(index);
+                    var cartIds = [];
                     for (var i = 0; i < uls.length; i++) {
                         var input = uls[i].getElementsByTagName('input')[0];
                         if (input.checked) {
+                            cartIds.push($(uls[i]).attr("cartId"));
                             uls[i].parentNode.removeChild(uls[i]);
                             i--;
                         }
                     }
                     $.ajax({
-                        url: "../userOrder/payCart",
+                        url: "../shoppingCarts/deleteCartBatch",
                         type: "POST",
                         dataType: "json",
                         data: {
@@ -127,15 +129,14 @@ layui.define(['layer'], function (exports) {
                         },
                         success: function (data) {
                             if (data.code === 666) {
-                                layer.msg("购买成功！", {icon: 1})
+                                layer.msg("删除成功！", {icon: 1})
                             } else {
-                                layer.msg("创建订单发生异常！", {icon: 2})
+                                layer.msg("删除时发生异常！", {icon: 2})
                             }
                         }
                     });
                     getTotal()
                     // }
-
                     // })
                 } else {
                     layer.msg('请选择商品')
@@ -144,17 +145,12 @@ layui.define(['layer'], function (exports) {
             };
 
             payBtn.onclick = function () {
-                console.log(123);
                 if (SelectedPieces.innerHTML != 0) {
-                    console.log(312);
-                    console.log(uls.length);
                     // layer.confirm('确定结算吗',{
                     //     yes:function(index,layero){
                     //         layer.close(index);
                     var cartIds = [];
-                    console.log(111);
                     for (var i = 0; i < uls.length; i++) {
-                        console.log(222);
                         var input = uls[i].getElementsByTagName('input')[0];
                         if (input.checked) {
                             cartIds.push($(uls[i]).attr("cartId"));

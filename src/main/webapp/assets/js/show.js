@@ -7,7 +7,6 @@ function getRecommended() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             showRecommended(data.extend.recommended)
         }
     })

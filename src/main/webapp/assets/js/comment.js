@@ -7,7 +7,6 @@ $(function () {
 
 //获取当前登录的user
 function getCurrentUser() {
-    console.log(localStorage.getItem("user"));
     return JSON.parse(sessionStorage.getItem("user"));
 }
 

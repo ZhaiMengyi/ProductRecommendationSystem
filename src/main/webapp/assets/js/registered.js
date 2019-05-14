@@ -6,7 +6,6 @@ layui.use(['form'],function () {
         layer.load(1);
         $.post("../user/registerUser",obj.field,function (data) {
             if(data.code == 666){
-                console.log(data);
                 layer.msg(data.msg,{icon:1});
                 setTimeout(function () {
                     location.replace("../views/login.html");

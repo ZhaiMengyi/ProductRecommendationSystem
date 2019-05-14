@@ -56,7 +56,6 @@ public class UserController {
         if (user != null){
             System.out.println(user);
             request.getSession().setAttribute("user", user);
-            user.setUserPassword(null);
             return Message.success("登录成功").addObject("user", user);
         }
         return Message.error("账号或密码错误");

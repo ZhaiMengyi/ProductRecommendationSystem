@@ -1,10 +1,7 @@
 package com.zmy.controller;
 
 import com.zmy.dto.Message;
-import com.zmy.entity.Product;
-import com.zmy.entity.ShoppingCart;
-import com.zmy.entity.User;
-import com.zmy.entity.UserScore;
+import com.zmy.entity.*;
 import com.zmy.service.ProductService;
 import com.zmy.service.ShoppingCartService;
 import com.zmy.service.UserScoreService;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -104,6 +102,30 @@ public class ShoppingCartController {
         }
 
         return Message.error("请重新登录");
+    }
+    /**
+     * 从购物车批量删除商品
+     *
+     * @param cartIds
+     * @return
+     */
+    @RequestMapping(value = "deleteCartBatch")
+    @ResponseBody
+    public Message deleteCartBatch(@RequestParam(value = "cartIds[]") Integer[] cartIds){
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null){
+            // 删除购物车
+            List<Integer> cartsList = Arrays.asList(cartIds);
+            Integer line2 = shoppingCartService.deleteCartBatch(cartsList);
+
+            if (line2 > 0) {
+                return Message.success("删除成功");
+            } else {
+                return Message.error("删除失败");
+            }
+        }
+
+        return Message.error("请登录");
     }
 
     /**

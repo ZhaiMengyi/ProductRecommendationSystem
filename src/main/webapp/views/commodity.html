@@ -9,6 +9,16 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <style>
+        .model-form {
+            padding-top: 30px;
+            padding-right: 45px;
+        }
+        .model-form-footer {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +33,7 @@
                 <a href="javascript:myInfo();"><i class="layui-icon">&#xe770;</i>个人信息</a>
             </div>
             <div class="login">
-                <a href="javascript:updateInfo();"><i class="layui-icon">&#xe631;</i>修改信息</a>
+                <a href="javascript:updateInfo()"><i class="layui-icon">&#xe631;</i>修改信息</a>
             </div>
             <div class="login">
                 <a href="shopcart.html"><i class="layui-icon">&#xe657;</i>购物车</a>
@@ -120,10 +130,6 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
-<script type="text/javascript" src="../assets/js/comment.js"></script>
-<script type="text/javascript" src="../assets/js/commodity.js"></script>
-<script type="text/javascript" src="../assets/js/allProduct.js"></script>
 <!-- 修改信息弹窗 -->
 <script type="text/html" id="pswModel">
     <form id="updateForm" class="layui-form model-form">
@@ -161,34 +167,9 @@
         </div>
     </form>
 </script>
-
-<!--<script>-->
-    <!--layui.config({-->
-        <!--base: '../assets/js/' //你存放新模块的目录，注意，不是layui的模块目录-->
-    <!--}).use(['mm', 'laypage', 'jquery'], function () {-->
-        <!--var laypage = layui.laypage,-->
-            <!--$ = layui.$,-->
-            <!--mm = layui.mm;-->
-        <!--laypage.render({-->
-            <!--elem: 'demo0'-->
-            <!--, count: 100 //数据总数-->
-        <!--});-->
-        <!--$('.sort a').on('click', function () {-->
-            <!--$(this).addClass('active').siblings().removeClass('active');-->
-        <!--})-->
-        <!--$('.list-box dt').on('click', function () {-->
-            <!--if ($(this).attr('off')) {-->
-                <!--$(this).removeClass('active').siblings('dd').show()-->
-                <!--$(this).attr('off', '')-->
-            <!--} else {-->
-                <!--$(this).addClass('active').siblings('dd').hide()-->
-                <!--$(this).attr('off', true)-->
-            <!--}-->
-        <!--})-->
-
-    <!--});-->
-<!--</script>-->
-
-
+<script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="../assets/js/comment.js"></script>
+<script type="text/javascript" src="../assets/js/commodity.js"></script>
+<script type="text/javascript" src="../assets/js/allProduct.js"></script>
 
 </html>

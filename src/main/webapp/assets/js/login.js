@@ -21,7 +21,6 @@ layui.use(['form'], function () {
 // 检查是否登录
 function checkLogin() {
     var tempUser = JSON.parse(sessionStorage.getItem("user"));
-    console.log(tempUser);
     if (tempUser != null) {
         location.replace("../views/show.html");
     }

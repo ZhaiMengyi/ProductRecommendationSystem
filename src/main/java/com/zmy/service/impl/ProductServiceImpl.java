@@ -16,10 +16,14 @@ import java.util.List;
  */
 //@Service用于标注业务层组件
 @Service
-//当类中方法抛出异常时，事务就会回滚，数据库里面的数据也会回滚。
+
+//事务注解，当类中方法抛出异常时，事务就会回滚，数据库里面的数据也会回滚。
+
 @Transactional(rollbackFor = Exception.class)
 public class ProductServiceImpl implements ProductService {
+
     //@Autowired注释使得接口可以被容器注入
+
     @Autowired
     private ProductMapper productMapper;
 
