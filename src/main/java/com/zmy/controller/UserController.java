@@ -78,15 +78,16 @@ public class UserController {
      * @param userAddress
      * @return
      */
-    @RequestMapping(value = "modifyUserInfo", method = RequestMethod.PUT)
+    @RequestMapping(value = "modifyUserInfo", method = RequestMethod.POST)
     @ResponseBody
     public Message modifyUserInfo(@RequestParam(value = "userName") String userName,
                                   @RequestParam(value = "userPassword") String userPassword,
                                   @RequestParam(value = "userMobile") String userMobile,
                                   @RequestParam(value = "userAddress") String userAddress) {
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        if (userId != null && userId != 0) {
-            Integer res = userService.modifyUserInfo(new User(userId, userName, userPassword, userMobile, userAddress));
+        User user = (User) request.getSession().getAttribute("user");
+        System.out.println(user);
+        if (user != null) {
+            Integer res = userService.modifyUserInfo(new User(user.getUserId(), userName, userPassword, userMobile, userAddress));
             if (res > 0){
                 return Message.success("修改成功");
             }
