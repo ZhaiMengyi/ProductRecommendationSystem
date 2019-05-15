@@ -34,5 +34,4 @@ public interface UserService {
      * @param userId 用户Id
      * @return 影响行数
      */
-    Integer deleteUser(Integer userId);
 }

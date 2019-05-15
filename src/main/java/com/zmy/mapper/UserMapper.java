@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author ZhaiMY
+ */
 @Mapper
 public interface UserMapper {
     Integer registerUser(@Param(value = "user") User user);
@@ -15,5 +18,4 @@ public interface UserMapper {
 
     Integer modifyUserInfo(@Param(value = "user") User user);
 
-    Integer deleteUser(Integer userId);
 }

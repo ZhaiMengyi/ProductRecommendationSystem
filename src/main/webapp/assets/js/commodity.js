@@ -79,28 +79,3 @@ function loginOut() {
     })
 }
 
-
-//注销
-function deleteUser() {
-    var user = getCurrentUser();
-    console.log(user.extend.user.userId);
-    layer.confirm('确定要注销吗？', function (index) {
-        layer.close(index);
-        layer.load(1);
-        $.ajax({
-            url: "../user/deleteUser/" + user.extend.user.userId,
-            type: "DELETE",
-            dataType: "JSON",
-            success: function (data) {
-                layer.closeAll('loading');
-                if (data.code == 666) {
-                    layer.msg(data.msg, {icon: 1});
-                    console.log("delete")
-                    location.replace("../index.html");
-                } else {
-                    layer.msg(data.msg, {icon: 2});
-                }
-            }
-        });
-    });
-}

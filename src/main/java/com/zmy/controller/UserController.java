@@ -95,18 +95,7 @@ public class UserController {
 
         return Message.success("修改失败");
     }
-    /**
-     * 注销
-     * @return
-     */
-    @DeleteMapping("/deleteUser/{userId}")
-    @ResponseBody
-    public Message deleteUser(@PathVariable("userId") Integer userId) {
-        if (userService.deleteUser(userId)>0){
-            return Message.success("删除用户信息成功");
-        }
-        return Message.error("删除用户信息失败");
-    }
+
     /**
      * 退出登录
      * @return

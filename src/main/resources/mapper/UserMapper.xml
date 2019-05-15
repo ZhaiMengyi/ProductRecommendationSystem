@@ -48,11 +48,4 @@
         where user_id = #{user.userId}
     </update>
 
-    <!--删除-->
-    <delete id="deleteUser" parameterType="com.zmy.entity.User">
-        delete from
-          users
-        where
-          user_id = #{userId}
-    </delete>
 </mapper>

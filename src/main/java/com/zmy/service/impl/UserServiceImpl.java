@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+import javax.annotation.Resource;
+
+/**
+ * @author ZhaiMY
+ */
+@Service("userService")
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
     @Override
     public Integer registerUser(User user) {
@@ -30,8 +35,4 @@ public class UserServiceImpl implements UserService {
         return userMapper.modifyUserInfo(user);
     }
 
-    @Override
-    public Integer deleteUser(Integer userId) {
-        return userMapper.deleteUser(userId);
-    }
 }
